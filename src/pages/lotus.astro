@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import { LotusGenerator } from "../components/LotusGenerator.tsx";
+---
+
+<Base title="Lotus Generator">
+  <div class="mx-auto max-w-7xl px-6 py-24">
+    <div class="fade-in">
+      <h1 class="text-4xl font-bold tracking-tight">Lotus Generator</h1>
+      <p class="mt-4 text-zinc-400">
+        Interactive generative art — geometric lotus patterns drawn on canvas.
+      </p>
+    </div>
+
+    <div class="mt-12">
+      <LotusGenerator client:only="react" />
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,35 @@
+---
+import Base from "../layouts/Base.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import siteConfig from "../data/site.json";
+---
+
+<Base title="About">
+  <div class="mx-auto max-w-2xl px-6 py-24">
+    <div class="fade-in">
+      <h1 class="text-4xl font-bold tracking-tight">About</h1>
+    </div>
+
+    <div class="fade-in" style="animation-delay: 0.1s">
+      <div class="mt-8 space-y-6 leading-relaxed text-zinc-400">
+        <p>{siteConfig.bio}</p>
+        <p>I'm always interested in new opportunities and conversations. Feel free to reach out.</p>
+      </div>
+    </div>
+
+    <div class="fade-in" style="animation-delay: 0.2s">
+      <div class="mt-12 flex flex-col gap-6">
+        <a
+          href={siteConfig.resumeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex w-fit items-center gap-2 rounded-full border border-zinc-700 px-5 py-2.5 text-sm font-medium transition-colors hover:border-zinc-500 hover:bg-zinc-900"
+        >
+          Download Resume
+          <span aria-hidden="true">&darr;</span>
+        </a>
+        <SocialLinks socials={siteConfig.socials} />
+      </div>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,22 @@
+---
+import Base from "../../layouts/Base.astro";
+import ExperimentsList from "../../components/ExperimentsList.tsx";
+
+const experimentFiles = import.meta.glob("../../data/experiments/*.json", { eager: true });
+const experiments = Object.values(experimentFiles)
+  .map((mod: any) => mod.default)
+  .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<Base title="Experiments">
+  <div class="mx-auto max-w-5xl px-6 py-24">
+    <div class="fade-in">
+      <h1 class="text-4xl font-bold tracking-tight">Experiments</h1>
+      <p class="mt-4 text-zinc-400">Code, images, videos, and projects I'm working on.</p>
+    </div>
+
+    <div class="mt-12">
+      <ExperimentsList client:idle experiments={experiments} />
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,12 @@
+{
+  "title": "This Website",
+  "slug": "personal-site",
+  "description": "Built with Astro, Tailwind, and Framer Motion. Islands architecture for zero JS on static pages.",
+  "date": "2026-03-31",
+  "tags": ["code", "web", "astro"],
+  "type": "code",
+  "featured": true,
+  "link": "https://github.com/aneeshsimha/vienna",
+  "images": [],
+  "thumbnail": null
+}

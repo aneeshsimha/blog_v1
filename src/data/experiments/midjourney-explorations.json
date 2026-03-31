@@ -1,0 +1,12 @@
+{
+  "title": "Midjourney Explorations",
+  "slug": "midjourney-explorations",
+  "description": "A collection of AI-generated art experiments using Midjourney, exploring surreal landscapes and abstract compositions.",
+  "date": "2026-03-30",
+  "tags": ["ai", "art", "midjourney"],
+  "type": "images",
+  "featured": true,
+  "link": null,
+  "images": ["/images/experiments/midjourney-1.jpg"],
+  "thumbnail": "/images/experiments/midjourney-1.jpg"
+}

@@ -1,0 +1,23 @@
+---
+import SocialLinks from "./SocialLinks.astro";
+
+interface Social {
+  platform: string;
+  url: string;
+  icon: string;
+}
+
+interface Props {
+  socials: Social[];
+}
+
+const { socials } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-zinc-800">
+  <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-8 text-sm text-zinc-500 sm:flex-row sm:justify-between">
+    <p>&copy; {year} All rights reserved.</p>
+    <SocialLinks socials={socials} size="sm" />
+  </div>
+</footer>

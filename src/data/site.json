@@ -1,0 +1,12 @@
+{
+  "name": "Aneesh Simha",
+  "tagline": "Builder, writer, and visual experimenter. Exploring ideas at the intersection of technology and creativity.",
+  "bio": "Hi, I'm Aneesh. I build things, write about ideas, and experiment with visual art through tools like Midjourney. This site is a home for my work — a place to share what I'm building, what I'm thinking about, and what I'm creating visually.",
+  "email": "hello@aneesh.dev",
+  "resumeUrl": "/resume.pdf",
+  "socials": [
+    { "platform": "GitHub", "icon": "github", "url": "https://github.com/aneeshsimha" },
+    { "platform": "LinkedIn", "icon": "linkedin", "url": "https://linkedin.com/in/aneeshsimha" },
+    { "platform": "X", "icon": "x", "url": "https://x.com/aneeshsimha" }
+  ]
+}

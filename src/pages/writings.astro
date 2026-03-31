@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import WritingCard from "../components/WritingCard.astro";
+
+const writingFiles = import.meta.glob("../data/writings/*.json", { eager: true });
+const writings = Object.values(writingFiles)
+  .map((mod: any) => mod.default)
+  .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+---
+
+<Base title="Writings">
+  <div class="mx-auto max-w-2xl px-6 py-24">
+    <div class="fade-in">
+      <h1 class="text-4xl font-bold tracking-tight">Writings</h1>
+      <p class="mt-4 text-zinc-400">Thoughts, ideas, and explorations.</p>
+    </div>
+
+    <div class="mt-12 space-y-4">
+      {writings.length === 0 ? (
+        <p class="text-zinc-500">Posts coming soon. Stay tuned!</p>
+      ) : (
+        writings.map((w: any, i: number) => (
+          <div class="fade-in" style={`animation-delay: ${i * 0.05}s`}>
+            <WritingCard writing={w} />
+          </div>
+        ))
+      )}
+    </div>
+  </div>
+</Base>
