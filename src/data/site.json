@@ -1,9 +1,9 @@
 {
   "name": "Aneesh Simha",
-  "tagline": "Builder, writer, and visual experimenter. Exploring ideas at the intersection of technology and creativity.",
-  "bio": "Hi, I'm Aneesh. I build things, write about ideas, and experiment with visual art through tools like Midjourney. This site is a home for my work — a place to share what I'm building, what I'm thinking about, and what I'm creating visually.",
-  "email": "hello@aneesh.dev",
+  "tagline": "Software engineer, builder, and visual experimenter based in New York City.",
+  "bio": "I'm a software engineer with a background in data engineering and infrastructure. I studied Materials Science at UIUC and Computer Science at Santa Clara University. I've worked at startups and growth-stage companies — most recently as a Founding Engineer at Minerva Data, where I architected the data platform from scratch, and before that at Komodo Health building data pipelines and infrastructure at scale. I'm interested in the space where engineering meets creativity: building tools, experimenting with generative art, and writing about the things I'm learning.",
   "resumeUrl": "/resume.pdf",
+  "location": "New York City",
   "socials": [
     { "platform": "GitHub", "icon": "github", "url": "https://github.com/aneeshsimha" },
     { "platform": "LinkedIn", "icon": "linkedin", "url": "https://linkedin.com/in/aneeshsimha" },

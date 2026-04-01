@@ -6,45 +6,43 @@ A running reference of personal sites I find interesting — design breakdowns, 
 
 ## 1. manveer.xyz
 
-**URL:** https://www.manveer.xyz  
+**URL:** https://www.manveer.xyz
 **Logged:** 2026-03-31
 
 ### Visual Design
-- **Color palette:** Near-pure white background, black text. Zero accent colors. The restraint is intentional — the lack of color *is* the aesthetic.
-- **Typography:** Simple sans-serif stack, left-aligned. No decorative or display fonts. Body copy does all the heavy lifting.
-- **Layout:** Single column, generous whitespace. No grid, no sidebar, no cards. Just text breathing on a page.
-- **Spacing:** Very open — sections separated by large vertical gaps, content never feels crowded.
-- **Signature element:** An animated orb GIF (`images/orb.gif`) sits near the top as the only visual decoration. It loops and auto-plays, resuming on tab visibility change. The orb is mysterious and slightly alien — it creates a strong first impression against the otherwise sparse layout.
+- **Color palette:** `#000000` background, `#FFFFFF` text. Zero accent colors (a `#005FC6` blue exists in commented-out CSS). Secondary text at `opacity: 0.25`. The restraint is intentional — the lack of color *is* the aesthetic
+- **Typography:**
+  - **Title:** PPPlayground Light (OTF), weight `200`, `72px` desktop / `64px` mobile
+  - **Subtitle:** PPPlayground Medium (OTF), weight `400`, `32px`
+  - **Body/links:** Berkeley Mono Regular (TTF), `13.3px` desktop / `12px` mobile
+  - **Line-height:** `1.6` (desktop), `1.8` (mobile subtext)
+- **Layout:** Flexbox column, centered. `.content` container: `max-width: 660px`, `width: 100%`, `height: 100vh` (desktop) / `auto` (mobile). `margin-top: -64px`, `padding: 4px` desktop / `0 8px` mobile
+- **Spacing:** h1 `margin: 0; padding: 0`. `.translation` opacity `0.25`. `.main-subtext` margin-bottom `24px`. List items `margin-bottom: 8px`. Links `padding-bottom: 4px`
+- **Signature element:** Animated orb — video (`images/orb.mp4`) on desktop, GIF (`images/orb.gif`) on mobile. Width `26%` desktop / `44%` mobile, `aspect-ratio: 1/1`, `margin-bottom: 32px`. Masked with `radial-gradient(circle, black 50%, transparent 75%)`. `pointer-events: none`
+- **Responsive breakpoint:** `@media (max-width: 768px)` — switches `overflow: hidden` → `overflow: scroll`, swaps video/gif display
 
 ### Vibe & Personality
-Intellectual minimalism. The site reads like a business card crossed with a philosophical statement. The name is defined in the header — "mind·brother" — which immediately signals that this person thinks carefully about identity and language. Credibility is established through name-drops (Prime Intellect, ResearchHub, Brian Armstrong, Balaji Srinivasan) rather than a portfolio of work. It says: *the work speaks for itself, I don't need to show you slides.* The overall tone is confident, understated, and slightly mysterious.
+Intellectual minimalism. The site reads like a business card crossed with a philosophical statement. The name is defined in the header — "mind·brother" — which immediately signals that this person thinks carefully about identity and language. Credibility is established through name-drops (Prime Intellect, ResearchHub, Brian Armstrong, Balaji Srinivasan) rather than a portfolio of work. The overall tone is confident, understated, and slightly mysterious.
 
-### UX Flow
-1. **Land** → immediately see the animated orb and the name definition — you're oriented fast
-2. **Scroll** → short professional description, no nav needed
-3. **Exit** → social links at the bottom, single clear CTA to connect
+### Interactive Elements & JS Behaviors
+- **Orb autoplay:** `orb.play().catch(function() {})` on load with `autoplay loop muted playsinline disablepictureinpicture disableremoteplayback` attributes
+- **Visibility resume:** `document.addEventListener('visibilitychange', ...)` — resumes orb when tab regains focus
+- **Link hover:** `a:hover { text-decoration: none }` — underline disappears on hover (inverse pattern)
+- **Links opacity:** `.link { opacity: 0.25 }` — social links are deliberately muted
+- **Media controls hidden:** `-webkit-media-controls { display: none !important }` — no video chrome visible
 
-No navigation. No pages. No filtering. The entire site is consumed in under 60 seconds. The UX philosophy is: give the reader everything they need and nothing they don't.
-
-### Interactive Elements
-- Animated orb GIF (auto-plays, resumes on tab focus via JS)
-- Social links (footer)
-- Nothing else — deliberately static
-
-### Structure
-Single page. No subpages, no blog, no writing section. Just: *who I am, what I've done, how to reach me.*
-
-### What's Distinctive
-- The orb — one unusual visual element in a sea of nothing makes it incredibly memorable
-- Name definition as the hero — poetic and unusual framing for a portfolio
-- The extreme minimalism feels earned, not lazy — it's a statement
-- No navigation is bold: trusts that a single scroll is enough
+### UI Elements Worth Noting
+- **Radial gradient mask on video** — creates a soft-edged orb effect without canvas: `mask-image: radial-gradient(circle, black 50%, transparent 75%)`
+- **Opacity as hierarchy** — `0.25` for secondary text/links, no color needed
+- **Video-on-desktop, GIF-on-mobile** — performance-conscious media switching
+- **Berkeley Mono** — premium monospace font choice that elevates a minimal palette
 
 ### Potential Features to Steal for Vienna
 - **One signature visual element** that's animated/unusual — could be an orb, a glitch effect, an ASCII animation, a looping canvas sketch
+- **Radial gradient mask on media** — soft-edge masking without canvas, pure CSS
 - **Name/identity framing** in the hero — defining yourself in an unexpected way rather than just a tagline
-- **Extreme restraint as a style** — if we go the opposite direction (fun/colorful) this is a useful contrast reference
-- **Single-page feel for certain sections** — the about page could take notes from this flow
+- **Opacity-based hierarchy** — using `0.25` opacity for secondary elements instead of gray
+- **PPPlayground + Berkeley Mono** font pairing as a reference for warm display + technical mono
 
 ---
 
@@ -78,14 +76,16 @@ Very fast consumption. No filtering, no tags, no categories — just a list.
 ### Structure
 Multi-page site (home referenced in footer). Projects page is a simple vertical list.
 
-### What's Distinctive
-- The content itself (antimatter, nuclear reactors) does the visual work — the design steps back
-- Extreme simplicity as a statement of confidence
-- No portfolio thumbnails — trusts the project names to carry weight
+### UI Elements Worth Noting
+- **Zero visual chrome** — no thumbnails, no cards, no borders. Just text links with semantic hierarchy
+- **Footer nav as the only navigation** — no header menu, just `[home] [twitter]` at the bottom
+- **External links as the primary interaction** — the site points outward, not inward
+- **Chronological ordering** without dates shown — implicit timeline through list order
 
 ### Potential Features to Steal for Vienna
 - **Credentials-forward project listing** — let the work titles do the work, minimal visual chrome
 - **No-thumbnail option** for experiments that are code/concept-based (vs. visual work)
+- **Footer-only navigation** for minimal pages
 
 ---
 
@@ -119,15 +119,18 @@ Progressive disclosure approach — the homepage is almost a loading screen/port
 ### Structure
 At minimum: landing → about. Likely more pages inside.
 
-### What's Distinctive
-- **Portal-style landing** — one action, no nav, no options, just "Enter"
-- Celestial symbols as a unique personal brand element
-- Dark minimal but with warmth from the mystical angle
+### UI Elements Worth Noting
+- **SvelteKit transitions** — framework-level page transitions (likely `fly` or `fade` Svelte transitions)
+- **Celestial symbols as UI elements:** `☽` (moon), `✧` (sparkle), `☉` (sun) — used in nav, CTA, and section dividers
+- **"Enter ✧" CTA** — a single interactive element on the entire landing page. The `✧` character IS the interaction affordance
+- **Progressive disclosure pattern** — homepage → click → real content. Anti-pattern for SEO, great for experience
+- **Dark mode as default** — no toggle, dark is the identity
 
 ### Potential Features to Steal for Vienna
 - **Portal/entry landing** concept — a single full-screen moment before the site opens up
 - **Symbol as brand** — picking one icon/glyph that becomes your visual signature throughout the site
 - **Progressive disclosure** — hide the nav initially, reveal it after a first interaction
+- **Unicode symbols as interactive elements** — `✧`, `→`, `☽` are richer than SVG icons
 
 ---
 
@@ -161,16 +164,20 @@ Hub-and-spoke model. All sections equally accessible from the top.
 ### Structure
 Homepage → CV / Books / Posts / Lists (+ RSS)
 
-### What's Distinctive
-- **Bracketed nav links** — typographic personality that feels intentional and slightly nerdy
-- **Books + Lists sections** — positions the site as a knowledge/curation space, not just a portfolio
-- **RSS feed** — signals this is a living site, not a static card
+### UI Elements Worth Noting
+- **Bracketed nav links** `[cguti.xyz] [cv] [books] [posts] [lists]` — typographic personality. We adopted this pattern for vienna's nav!
+- **SvelteKit dynamic rendering** — smooth client-side navigation between pages
+- **RSS feed** — XML feed signals this is a living, actively-updated site
+- **Hub-and-spoke navigation** — all sections equally weighted, no hierarchy between CV/books/posts/lists
+- **Custom `banner.png` logo** — visual identity without complex SVG or font-based logos
+- **Markdown-influenced spacing** — the site feels like rendered markdown, generous and readable
 
 ### Potential Features to Steal for Vienna
 - **Books / Currently Reading section** — easy to maintain, adds personality
 - **Lists page** — curated lists of things you like (tools, music, places) are endlessly browsable
 - **RSS** — add a feed for the writings section
-- **Bracketed or typographic nav styling** — small details that add character
+- **Bracketed nav styling** — already stolen and implemented! `[Home] [Experiments] [Writings]...`
+- **Hub-and-spoke equal weighting** — don't privilege one section over others
 
 ---
 
@@ -204,14 +211,18 @@ Implicit navigation (no menu) — vertical scrolling through categorical section
 ### Structure
 Single page with sections: hero / projects / press / bio / contact
 
-### What's Distinctive
-- **Press mentions as a section** — social proof through journalism, not testimonials
-- **Fun project alongside serious work** — personality punctures credential-heaviness
-- **Bio capsule** — compressed, pithy self-description tucked between projects and contact
+### UI Elements Worth Noting
+- **Google Analytics (UA-18115656-2)** — async loading, tracks visitor behavior
+- **Single-page scroll architecture** — no router, just anchor sections (hero / projects / press / bio / contact)
+- **Implicit navigation** — no visible nav menu; the page IS the navigation via scrolling
+- **External links as primary CTAs** — project titles link outward, not to detail pages
+- **Press logos/mentions inline** — social proof integrated into the flow, not a separate testimonials page
+- **Fun project mixed with serious** — "Hack My Facebook" next to enterprise work prevents the site from feeling stiff
 
 ### Potential Features to Steal for Vienna
 - **Press / Featured In section** — if you've been mentioned anywhere, display it
 - **Short bio capsule** — a 2–3 line summary of yourself placed before the contact section
+- **Fun project interspersed** — prevents a portfolio from feeling too corporate
 
 ---
 
@@ -221,47 +232,68 @@ Single page with sections: hero / projects / press / bio / contact
 **Logged:** 2026-03-31
 
 ### Visual Design
-- **Color palette:** `#f1f0ec` warm off-white background, black text. Subtle and warm — not stark white, not dark. Uses `rgba` opacity variants for secondary text
-- **Typography:** Monument Grotesk Variable as primary typeface (weights n2–n10, including italics). System font fallbacks. Very typographically considered
-- **Layout:** Fixed left sidebar (15% width) for desktop nav, 100% width on mobile. Content area ~70% width. Grid-based spacing system
-- **Spacing:** Consistent `1rem` margins, grid-gutter utilities. Very deliberate
-- **Effects:** Fade transitions (333ms cubic-bezier) on interactive elements. Image zoom (cursor: zoom-in). Draggable elements with opacity feedback
+- **Color palette:**
+  - Primary background: `#f1f0ec` (warm off-white)
+  - Text: `#1a1918` (near-black, warm)
+  - Text overlay light: `rgba(255,255,255,0.75)`
+  - Text overlay inactive: `rgba(255,255,255,0.4)`
+  - Quick view overlay: `rgba(0,0,0,0.8)`
+  - Icon stroke: `rgba(0,0,0,0.6)`
+  - Loading spinner: `#ccc`
+  - Opacity scale: `rgba(0,0,0,0.003)`, `0.04`, `0.09`, `0.2` for subtle layering
+- **Typography:**
+  - **Primary:** Monument Grotesk Variable (weights: 200, 240, 400, 600, 700, 800)
+  - **Fallback:** `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif`
+  - **Icon font:** Icons (woff2, IconFont-Regular-0.9.3)
+  - **Font sizes:** `10px`, `12px`, `14px`, `20px`, `60px`
+  - **Font weights:** full 100–900 range available
+- **Layout:**
+  - Desktop sidebar: `15%` width, fixed position
+  - Content area: `70%` width
+  - Mobile: `100%` width, sidebar becomes top nav
+  - Main margin: `1rem` all sides, content margin `5%`
+  - 12-column responsive grid system
+  - Gutter range: `0.5rem` to `10rem`
+- **Effects:**
+  - Arrow fade: `333ms cubic-bezier(0.4, 0, 0.22, 1)`
+  - Zoom transition: `222ms cubic-bezier(0.4, 0, 0.22, 1)`
+  - Loading spinner: `12s infinite ease-out`
+  - Pulse fade-in: `0.5s ease-in-out`
+  - Following panel: `450ms cubic-bezier(0.24, 1, 0.29, 1)`
+  - Scroll transitions: `1s ease-in-out`
+  - Opacity transitions: `0.8s`
 
 ### Vibe & Personality
-Intellectual minimalism done with genuine craft. The warm off-white versus stark white is a meaningful choice — it's warmer, more editorial, like good paper. The site feels like a well-designed magazine or a thoughtful book. Navigation uses `→` arrows which add directional, guiding character. First-gen immigrant narrative on the About page adds depth and values-driven positioning — rare and memorable.
+Intellectual minimalism done with genuine craft. The warm off-white (`#f1f0ec`) versus stark white is a meaningful choice — it's warmer, more editorial, like good paper. Navigation uses `→` arrows which add directional, guiding character. First-gen immigrant narrative on the About page adds depth and values-driven positioning.
 
-### UX Flow
-1. **Land** → hero with linked imagery
-2. **Navigate** via fixed left sidebar: About / Work / Writing / Investments
-3. **About page** → biographical content, philosophy, interests, contact openness
-4. Reading progress bar on long-form content
+### Interactive Elements & JS Behaviors
+- **Image zoom:** `-webkit-zoom-in` / `-moz-zoom-in` cursors, native browser zoom
+- **Draggable elements:** with opacity feedback
+- **Portfolio filter:** active/acquired/dead companies with dynamic stat calculation
+- **Reading progress bar:** scroll percentage tracking via JS
+- **Slideshow navigation:** SVG arrows `36px × 36px`
+- **Audio player:** flex layout, `3.3rem` button height, seekable progress bar
+- **Shop button:** bottom-right fixed position
+- **Marquee:** bounce and scroll behaviors with transform animations
+- **Scroll-monitor integration** for viewport detection
+- **Navigation state:** via `rel="history"` attributes
 
-Left-sidebar navigation is unusual for personal sites — desktop-first thinking. Mobile gets a top nav instead.
-
-### Interactive Elements
-- Image zoom (click to enlarge)
-- Draggable elements with visual feedback
-- Portfolio filter (active/acquired/dead companies with dynamic stat calculation)
-- Reading progress bar (scroll indicator for long articles)
-- Smooth fade transitions between pages (333ms cubic-bezier)
-- Multiple image gallery modes: grid, columns, freeform/montessori
-
-### Structure
-About / Work / Writing (Notes) / Portfolio (Investments) / Photos
-
-### What's Distinctive
-- **Monument Grotesk Variable** — premium type choice that elevates the entire design
-- **Warm off-white** background — breaks from the zinc/white binary most sites choose
-- **Reading progress bar** — commits to long-form writing being a first-class experience
-- **First-gen narrative** in the About page — authentic identity positioning
-- **Investment portfolio with status filters** — adds a sophisticated financial/VC dimension
+### UI Elements Worth Noting
+- **12-column grid with `0.5rem–10rem` gutter range** — very flexible spacing system
+- **`cubic-bezier(0.4, 0, 0.22, 1)`** — their signature easing, used on arrows and zoom. Feels "snappy then soft"
+- **`cubic-bezier(0.24, 1, 0.29, 1)`** — following panel easing, very bouncy/organic
+- **Monument Grotesk Variable** at weight `240` — unusually light weight creates editorial feel
+- **`rgba(0,0,0,0.003)`** — nearly invisible overlays for subtle depth on hover
+- **Multiple gallery modes:** grid, columns, freeform/montessori — each with different CSS layouts
+- **Audio player embedded** — treats the site like a full publication, not just a portfolio
 
 ### Potential Features to Steal for Vienna
-- **Warm off-white background** — `#f1f0ec` or similar as an alternative to stark white/dark
-- **Monument Grotesk** or similarly strong variable font as a headline choice
-- **Reading progress bar** for long writing pieces
+- **Warm off-white background** — `#f1f0ec` is almost exactly our `#f8f5f0`
+- **Snappy easing:** `cubic-bezier(0.4, 0, 0.22, 1)` for interactive elements
+- **Reading progress bar** for long writing pieces (already implemented!)
 - **→ arrow navigation styling** — directional arrows as a typographic detail
 - **Image freeform/montessori gallery** for the experiments section
+- **Nearly-invisible opacity overlays** (`rgba 0.003–0.04`) for subtle hover depth
 
 ---
 
@@ -287,28 +319,35 @@ Hacker-researcher-founder hybrid. Technical but warm. The writing section covers
 
 Clear top-to-bottom narrative. No sidebar. Writing and projects co-equal.
 
-### Interactive Elements
-- Light/dark theme toggle (persisted in localStorage)
-- Autoplay MP4 and GIF demos on project cards
-- Blog search (`?query=` param)
-- Scroll-triggered reveals (likely)
-- Photography gallery embedded inline
+### Interactive Elements & Technical Details
+- **Theme system:** `data-theme` attribute on DOM, persisted in `localStorage`. Light/dark toggle
+- **Font stack:** `system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif` + `"Apple Color Emoji", "Segoe UI Emoji"` — performance-first, zero custom fonts
+- **Font sizes:** `24px` headings, `14px` secondary text. Weights `400` and `500`
+- **Border styling:** `1px solid rgba(255,255,255,0.3)` dark mode / `rgba(0,0,0,0.3)` light mode
+- **Layout:** Flexbox-based, full viewport (`100vh`) sections, centered alignment
+- **Framework:** Next.js with CSS Modules
+- **Schema markup:** JSON-LD for Organization, WebSite, Person, CollectionPage, ProfilePage
+- **Autoplay MP4 and GIF demos** on project cards
+- **Blog search** (`?query=` param) — full-text search across writing
+- **Photography gallery** embedded inline
 
-### Structure
-Home (bio + highlights) / Blog (writing) / Projects (100+ with individual pages) / Gallery (photos)
-
-### What's Distinctive
-- **100+ projects** all displayed without clutter — extreme density done right
-- **Autoplay video/GIF demos** embedded directly in project cards
-- **Sepia hero image** as a warm, distinctive color choice against a neutral palette
-- **Decade-spanning timeline** from 2015 hardware → 2026 AI
-- **Blog search** — rare for a personal site, signals prolific writing output
+### UI Elements Worth Noting
+- **`data-theme` attribute pattern** — theme on a DOM attribute rather than class (like our `.dark`). Works well with CSS attribute selectors
+- **100+ projects without clutter** — extreme density through small, punchy card entries. No thumbnails needed
+- **System font stack** — deliberate choice: zero font loading = instant text render
+- **JSON-LD schema markup** — SEO/structured data for Person, Organization — good practice
+- **`rgba` border colors** that adapt to theme — single border definition works in both modes
+- **Sepia hero image** (`herojourneysepia.jpeg`) — warm photo treatment that matches any color scheme
+- **Blog search with `?query=`** — rare for personal sites, signals serious content volume
+- **Analytics with view counts** — tracks readership per post
 
 ### Potential Features to Steal for Vienna
 - **Autoplay demos** in experiment cards (GIF or MP4) instead of static thumbnails
 - **Sepia or warm-toned hero imagery** as a distinctive color accent
 - **Blog/experiment search** — simple query filter if content grows
 - **Timeline view** for experiments — show the evolution of work over years
+- **`rgba` adaptive borders** — single border color that works in both themes via opacity
+- **JSON-LD structured data** — good SEO practice for personal portfolio
 
 ---
 
@@ -341,15 +380,20 @@ Non-linear UX — you follow links of interest rather than a prescribed path.
 ### Structure
 Obsidian Publish site — wiki/graph structure. "Chat with me!" as entry. Unknown depth.
 
-### What's Distinctive
-- **Obsidian Publish as the platform** — immediately signals a "thinking in public" philosophy
-- **"/hello" as entry page** — warm, personal, anti-portfolio framing
-- **Non-linear navigation** — you explore rather than browse a nav menu
+### UI Elements Worth Noting
+- **Theme switching:** Light (`#fff` bg, `#222` text) and dark (`#1e1e1e` bg, `#dadada` text), persisted in `localStorage`
+- **CSS rotate animation** — possibly for loading states or visual accent
+- **`padding: 20px` spacing throughout** — consistent, unfussy
+- **Obsidian graph view** — visual representation of page connections, explorable
+- **Backlinks** — automatic reverse links at the bottom of each note
+- **Wiki-style `[[internal links]]`** — standard Obsidian pattern, creates a web of content
+- **"/hello" as entry page** — warm framing, not `/about` or `/home`
 
 ### Potential Features to Steal for Vienna
 - **"Hello" or conversational framing** for the about page instead of a formal bio
 - **Non-linear exploration** — linking between writings, experiments, and about page organically
 - **Digital garden philosophy** — writing doesn't have to be polished posts, can be notes and thoughts
+- **Backlinks pattern** — show related experiments/writings at the bottom of each page
 
 ---
 
@@ -373,25 +417,30 @@ Intellectual minimalism with philosophical undertones. Opens with the epigraph "
 3. Smooth scroll behavior throughout (anchor-based navigation)
 4. Minimal content — possibly a landing page or intentionally sparse
 
-### Interactive Elements
-- Smooth scrolling with custom easing (cubic-bezier)
-- Button hover states with shadow elevation
-- Link underline animations
-- Drawer navigation (hamburger) with backdrop overlay
-- All button clicks and page views event-tracked (analytics integration)
+### Interactive Elements & Technical Details
+- **Typography:** Helvetica/sans-serif, `14px` base, weights `400–700`. Title scaling: `1.0` → `0.7` on mobile
+- **Layout:** Centered column, `max-width: 1030px`. Fixed header with dynamic height calculation
+- **Button shadows:** `0px 4px 10px` at `22.6%` opacity on hover. `border-radius: 20px`. Transitions `200ms ease-in-out`
+- **Link hovers:** 5% opacity overlay on hover state
+- **Smooth scrolling** with custom easing (cubic-bezier)
+- **Drawer navigation** (hamburger) with backdrop overlay on mobile
+- **All button clicks and page views event-tracked** (analytics integration)
+- **Image carousel:** 24 sequential WebP images (`img2.webp` through `img25.webp`)
+- **Social links:** Twitter, GitHub, resume. Email: `aaryag@berkeley.edu`
 
-### Structure
-Uncertain from fetch — appears minimal. References "Bombadil" (possibly a project or related site). Sticky header with main links, CTAs, and language selection.
-
-### What's Distinctive
-- **Biblical epigraph as opening** — deeply personal and unusual choice for a personal site
-- **"Hello friend!"** greeting — small but human detail
-- **Full event tracking** on all interactions — the creator cares about analytics
-- **Language selection** in nav — international audience consideration
+### UI Elements Worth Noting
+- **Button shadow on hover** — `0px 4px 10px, 22.6% opacity` creates a subtle elevation effect. The `22.6%` opacity is very specific/intentional
+- **`border-radius: 20px`** on buttons — pill-shaped, softer than our `rounded-full`
+- **5% opacity overlay on link hover** — nearly invisible but adds tactile feedback
+- **Dynamic header height** — calculated rather than fixed, adapts to content
+- **24-image WebP carousel** — heavy visual content, all optimized format
+- **`200ms ease-in-out`** — their standard transition timing
+- **Language selector in nav** — international audience consideration
 
 ### Potential Features to Steal for Vienna
 - **Opening quote or epigraph** — a single line that sets the philosophical tone of the whole site
 - **Smooth scroll with custom easing** — underrated detail that makes navigation feel premium
+- **`22.6%` opacity button shadows** — very subtle elevation on hover
 - **"Hello friend" or first-person warmth** as a greeting pattern
 
 ---
@@ -411,46 +460,55 @@ Uncertain from fetch — appears minimal. References "Bombadil" (possibly a proj
 **Logged:** 2026-03-31
 
 ### Visual Design
-- **Color palette:** Pure black background, white text. Single high-contrast accent color for interactive elements. Gradient overlays (black at 70% opacity) fade top and bottom — creates a cinematic, immersive feel
-- **Typography:** Adobe TypeKit fonts. Uppercase headings, varying sizes (xl → 2.625rem), normal font-weight — bold without being heavy. Very intentional typographic restraint
-- **Layout:** Responsive grid, max-width 1440px. Mobile-first with distinct breakpoints. `50dvh` sections on mobile — content fills the viewport, forcing immersion
-- **Spacing:** Generous (8–12 unit padding). Consistent vertical rhythm
-- **Effects:** Top/bottom gradient fade overlays for scroll transitions. Hover underlines with variable thickness (1px mobile, 2px desktop, 2–4px offset). CSS spin animation for loading states
+- **Color palette:** `#000` primary background. Gradient overlays: `from-[#000]` to transparent (top/bottom fade). Primary accent via CSS variable (theme-defined)
+- **Typography:**
+  - **Font:** Adobe TypeKit (`https://use.typekit.net/udu1jyc.css`), class `font-heading`
+  - **Weight:** `400` (normal) — bold without being heavy
+  - **Line-height:** `1em` — very tight, compact
+  - **Transform:** Uppercase throughout
+  - **Responsive sizes:** `text-xl` (mobile) → `text-[2rem]` (tablet `md:`) → `text-[2.625rem]` (large `lg:`)
+- **Layout:**
+  - Container max-width: `1440px`
+  - Nav height: `h-[90px]` mobile / `h-[120px]` desktop
+  - Section heights: `h-[50dvh]` — content fills half-viewport, forcing immersion
+  - Max content width: `50vw` (responsive) / `700px` (3xl screens)
+- **Spacing:**
+  - Horizontal: `px-4` mobile / `px-5` desktop
+  - Vertical: `py-8` / `py-12`
+  - Margins: `mb-4`, `mb-8`, `mt-6`, `mb-12`, `pb-8`
+- **Effects:**
+  - Gradient fades: `bg-gradient-to-b from-[#000]` top/bottom viewport masks
+  - Loading: `animate-spin rounded-full` spinner
+  - Hover underlines: `decoration-1` (mobile) / `decoration-[2px]` (desktop)
+  - Underline offsets: `underline-offset-2` (mobile) / `underline-offset-4` (desktop)
+  - Hover on article cards: `hover:[&_article]:border-primary`
+- **Z-index layering:** Nav `z-10`, overlay `z-[9]`, skip link `z-[2000]`
 
 ### Vibe & Personality
-Aggressively competitive. The tagline is "Always laugh at the competition." This is a dark, high-conviction, intensity-forward brand — not a portfolio, not a knowledge garden, a *manifesto*. The uppercase type, pure black, and blunt copy all reinforce: *no softness here*. It reads like something between a sports performance brand and a war room. The vibe is not about being liked — it's about being remembered.
+Aggressively competitive. The tagline is "Always laugh at the competition." This is a dark, high-conviction, intensity-forward brand — not a portfolio, not a knowledge garden, a *manifesto*. The uppercase type, pure black, and blunt copy all reinforce: *no softness here*. The vibe is not about being liked — it's about being remembered.
 
-### UX Flow
-1. **Land** → full-bleed dark experience, tagline hits immediately
-2. **Scroll** → two featured posts: "War Path" and "Live To Compete"
-3. **Read** → individual post pages at `/posts/[slug]`
-4. Fixed gradient fades top/bottom on mobile create an immersive reading tunnel
-5. Loading spinner on data fetch — signals dynamic content
+### Interactive Elements & UI Details
+- **Skip link (a11y):** Fixed positioning with `focus-visible` states — `z-[2000]`
+- **Hover underlines:** Variable thickness (`decoration-1` → `decoration-[2px]`) and offset (`underline-offset-2` → `underline-offset-4`) by breakpoint
+- **Gradient viewport mask:** `bg-gradient-to-b from-[#000]` at top and `to-[#000]` at bottom — content scrolls underneath while edges fade to black
+- **Article card hover:** `hover:[&_article]:border-primary` — nested selector hover pattern
+- **Loading spinner:** `animate-spin rounded-full` during data fetch
+- **`50dvh` sections:** Modern dynamic viewport units for immersive content blocks
+- **`1em` line-height on headings** — unusually tight, creates visual density
 
-Navigation is anchored/persistent header. Mobile scrolls within the viewport (gradient-masked), desktop is more static.
-
-### Interactive Elements
-- Hover underlines (variable thickness + offset by breakpoint)
-- Gradient fade scroll mask (top + bottom of viewport)
-- Loading spinner during data fetch
-- CSS smooth transitions on all interactive elements
-- 404 page with return-home CTA
-
-### Structure
-Homepage (featured posts) → individual post pages (`/posts/[slug]`). Tight, focused — not a sprawling site.
-
-### What's Distinctive
-- **Gradient viewport mask** — content scrolls underneath while the edges fade to black. Cinematic and unusual
-- **Competitive manifesto tone** — the *writing* is the brand, not the design chrome
-- **"Always laugh at the competition"** — a tagline that's a position, not a description
-- **Uppercase type + pure black** — confidence through visual restraint and aggression simultaneously
-- **Dynamic viewport units (`dvh`)** — modern, responsive-first thinking
+### UI Elements Worth Noting
+- **Gradient fade mask** is just two positioned divs with `bg-gradient-to-b` — incredibly simple CSS for a cinematic effect
+- **TypeKit font loading** via external CSS — no self-hosting
+- **Responsive underline thickness** — `decoration-1` → `decoration-[2px]` is a subtle but polished detail
+- **`dvh` units** — modern viewport handling for mobile browsers with dynamic toolbars
+- **z-index architecture:** 3 layers (content → overlay → skip link) is well-structured
 
 ### Potential Features to Steal for Vienna
-- **Viewport fade mask** — gradient top/bottom on a scrollable writing section creates a premium reading experience with minimal code
-- **Manifesto-style tagline** — replacing a descriptive tagline ("builder, writer...") with a *positional* statement
-- **Uppercase section headers** — adds punch to section labels without needing a different font
-- **Full-bleed dark hero** — pure black (not zinc-950) with white text for maximum contrast on the hero section
+- **Viewport fade mask** — gradient top/bottom on a scrollable writing section creates a premium reading experience with minimal code (already implemented in vienna as `body::before/::after`!)
+- **Responsive underline thickness** — vary `text-decoration-thickness` and `underline-offset` by breakpoint
+- **`50dvh` section heights** — half-viewport blocks for immersive content pacing
+- **`1em` line-height** on display text for visual density
+- **TypeKit integration** pattern — reference for premium font loading
 
 ---
 
@@ -476,16 +534,23 @@ Inclusive, educational, and joyful. The mission statement — "a friendly tool f
 2. **Explore** → Reference / Tutorials / Examples / Community / About
 3. **Contribute** → donation button, community links (GitHub, Discord, YouTube, Forum)
 
-### What's Distinctive
-- **Section-specific accent colors** — each nav section has its own color identity (yellow for reference, orange for examples, taupe for tutorials)
-- **Accessibility-first sticky panel** — accessibility settings always available but non-intrusive
-- **Philosophy embedded in UI** — "p5.js will not add any new features except those that increase access" — values visible in the product, not just a manifesto page
-- **Community hero rotation** — 6 rotating images of real users, creates belonging
+### UI Elements Worth Noting
+- **Multi-accent CSS variable system:** magenta `#f1678e`, yellow `#dfed33`, orange `#f56a3a`, green `#47b28f`, blue `#dbe3f5` — assigned per-section
+- **"National Park" font** (sans-serif body) + **"Courier"** (monospace code) — warm, educational pairing
+- **H2 scales to `3.5rem`** on large screens — generous, confident sizing
+- **Grid gutters: `20–80px`** — responsive spacing system
+- **CSS spin with `prefers-reduced-motion` respect** — accessibility-first animation
+- **Rotating community hero** — random selection from 6 images on each load
+- **Sticky settings panel** — auto-hides after `2s`, always accessible
+- **Section-specific accent colors** — each nav section has its own color identity
+- **Philosophy embedded in UI** — values visible in product design, not just a manifesto
 
 ### Potential Features to Steal for Vienna
 - **Section accent colors** — each section of vienna (experiments, writings, about) could have its own subtle accent color instead of one uniform theme
-- **p5.js canvas sketches** as interactive hero backgrounds — generative art that responds to cursor movement is a huge vibe upgrade
-- **Community/colophon section** — a small "made with" or "built using" note that shows craft
+- **p5.js canvas sketches** as interactive hero backgrounds — generative art that responds to cursor movement
+- **`prefers-reduced-motion` respect** — should add this to our animations
+- **Community/colophon section** — a small "made with" or "built using" note
+- **Random hero image rotation** — show different content each visit
 
 ---
 
@@ -511,19 +576,25 @@ Intellectually sophisticated but emotionally grounded. Opens with personal memoi
 4. **Subscribe** → mid-article CTA ("For the intellectually restless") — non-aggressive placement
 5. **Exit** → full-width craftspeople poster as final image
 
-### What's Distinctive
-- **Hero as metaphor** — the noisy/resolving background *is* the article's theme (AI denoising). Meta-design done right
-- **Textile-pattern section dividers** — custom PNG borders that match the subject matter
-- **Table of contents with poetic section titles** — functional navigation that reads like a poem
-- **Date format `02026-02-07`** — the `0` prefix (Long Now Foundation format) signals long-horizon thinking
+### UI Elements Worth Noting
+- **"Flecha" display/headline serif font** — custom, editorial, warm. Body text in clean sans-serif
+- **Rotating hero animation** — `.webp` animated image (`lady-rotating-anim-2.webp`), purposeful motion
+- **Noisy textured hero background** — layered text fragments + ASCII sketches that resolve. Mirrors the article's AI denoising metaphor — meta-design
+- **Textile-pattern PNG dividers** between sections — custom borders that match the article's subject
+- **Table of contents** with Roman numerals (I–VI), hyperlinked. Section titles are poetic: "The Ghost in the Jacquard", "Brewing the Blue"
+- **Date format `02026-02-07`** — Long Now Foundation `0`-prefix. Signals long-horizon thinking
+- **Mid-article subscribe CTA** — "For the intellectually restless" — placed non-aggressively between sections
 - **Full-width craftspeople poster as final image** — ends on human dignity, not a CTA
+- **Images integrated into text flow** — not floating, not in separate galleries. Inline with the prose
+- **Centered modular grid** with substantial whitespace
 
 ### Potential Features to Steal for Vienna
 - **Article cover animation** — a looping subtle animation for each writing piece's hero image
 - **Poetic section headers** in long-form writing — don't label sections "Part 1", make them earned titles
-- **Textile/thematic dividers** between sections — could use a generative SVG pattern or simple rule styled to the post's theme
+- **Textile/thematic dividers** between sections — could use a generative SVG pattern
 - **Table of contents** for longer writing pieces — improves navigation and signals serious work
-- **Long Now date format** — small distinctive choice that signals you think on long timescales
+- **Long Now date format** — small distinctive choice
+- **Mid-article CTA** with personality ("For the intellectually restless") — could add to writings
 
 ---
 
@@ -542,15 +613,21 @@ Intellectually sophisticated but emotionally grounded. Opens with personal memoi
 ### Vibe & Personality
 Professional sophistication with approachability. Confident without being aggressive. "Break free from browser limitations" — liberation framing. The code-as-content strategy (show real implementation code alongside the live demo) is educational and builds trust simultaneously.
 
-### What's Distinctive
-- **Bundle size breakdown** — shows "24.50 KB total" with per-module breakdown (Timer 5.60 KB, Animation +5.20 KB...). Transparency about performance
-- **Code-as-content** — every demo shows the implementation. The docs teach by showing
-- **Version selector** — v4.0.0, 3.2.2, 2.1.0 — signals maturity and backward compat
+### UI Elements Worth Noting
+- **Live inline demos** — animated examples run directly in the page, not in iframes or videos
+- **Code-alongside-demo pattern** — every animation shows its source code. Educational trust-building
+- **Bundle size breakdown:** "24.50 KB total" with per-module sizes (Timer 5.60 KB, Animation +5.20 KB, etc.)
+- **Card-based feature grid** — horizontal cards below the hero, each with a live mini-demo
+- **Rotation demo, stagger demo, SVG morph demo, scroll-trigger demo, draggable demo** — all inline
+- **Version selector** (v4.0.0, 3.2.2, 2.1.0) — signals maturity
+- **"Break free from browser limitations"** — liberation framing, not technical framing
 
 ### Potential Features to Steal for Vienna
-- **Anime.js itself** — use it for the hover emoji tooltips (idea #2), load animations (idea #1), and card interactions. Lighter than Framer Motion for simple sequences
-- **Staggered entrance animations** — anime.js stagger is beautiful for grid cards loading in
-- **Scroll-triggered animations** on the experiments/writings grid
+- **Anime.js itself** — lighter than Framer Motion for simple sequences (but we're already committed to FM)
+- **Staggered entrance animations** — already implemented via StaggeredGroup.tsx!
+- **Scroll-triggered animations** — already implemented via FadeInView.tsx!
+- **Code-alongside-demo pattern** — could show source code for experiments inline
+- **Bundle size transparency** — fun to show vienna's JS bundle size somewhere
 
 ---
 
@@ -577,10 +654,18 @@ Physics as a UI pattern is deeply fun. Imagine:
 - 40+ interactive demos
 - Used by Google and game studios in production
 
+### UI Elements Worth Noting
+- **Canvas-based rendering** — all physics rendered to `<canvas>`, same pattern as our CursorField.tsx
+- **Mouse/touch constraint** — drag objects with pointer input, physics engine handles the response
+- **Gravity as a design tool** — objects fall, stack, tumble. Turns a static page into a playground
+- **Collision events** — detect when objects hit each other, trigger visual/audio feedback
+- **Constraints (springs, hinges)** — objects connected by invisible springs create organic, bouncy motion
+- **Composite bodies** — group multiple shapes into one object (e.g., a letter made of circles)
+
 ### Potential Features to Steal for Vienna
 - **Physics hero** — name/tagline letters as rigid bodies that tumble into place on load
 - **Interactive card physics** — experiments page where cards can be nudged/dragged
-- **Particle field** — background dots that scatter from the cursor using matter-js constraints
+- **Cursor-reactive particles** — already implemented in CursorField.tsx! (simpler than matter-js, but same concept)
 - **Falling letters easter egg** — clicking somewhere triggers a physics drop of characters
 
 ---
@@ -599,16 +684,20 @@ Physics as a UI pattern is deeply fun. Imagine:
 ### Vibe & Personality
 Technical minimalism with creative maximalism. The site itself is understated — but the gallery of 100+ real-world projects (NASA, Gucci, Netflix, Krunker.io, Crossy Road) does all the talking. It says: *this tool made all of that*. The community-first architecture (Discord, Forum, StackOverflow, project submissions) signals a mature, welcoming ecosystem.
 
-### What's Distinctive
-- **Massive scrollable project gallery** — social proof through inspiration. 100+ thumbnails, all linked, all different
-- **"Submit Project" CTA** — community contributions as the homepage's value proposition
-- **Direct GitHub link** — no friction to the source
-- **Merch store** — enough community to sell t-shirts
+### UI Elements Worth Noting
+- **100+ project thumbnail gallery** — masonry/grid layout, each linked to the live project. The gallery IS the homepage content
+- **Dark background, colorful thumbnails** — neutral frame lets the projects provide all color. Same approach as a museum wall
+- **Category-based vertical sections** — grouped by type, two-column+ flexible grid per category
+- **Monospace version numbers** `[r183]` — developer-functional aesthetic
+- **"Submit Project" CTA** — community contributions drive homepage content
+- **Direct GitHub link** — no friction to source code
+- **Clean sans-serif + monospace pairing** — functional hierarchy
 
 ### Potential Features to Steal for Vienna
 - **Three.js WebGL background** — a subtle 3D particle field or geometry in the hero is achievable and distinctive
 - **Project showcase gallery** — if experiments grow enough, a masonry thumbnail wall like this would be impressive
-- **Noise/perlin field** — three.js + noise can create a beautiful animated background for the hero that's subtle and alive
+- **Noise/perlin field** — three.js + noise can create a beautiful animated background for the hero
+- **Neutral frame + colorful content** — let the experiment thumbnails/demos provide the color, keep the chrome neutral
 
 ---
 
@@ -627,13 +716,19 @@ A clean UI panel from a product called Lucis. The panel says "Request an AI summ
 - **Icons:** AI model logos as clean black SVGs, equal size, evenly spaced in a horizontal row
 - **Layout:** Centered card, minimal chrome. No borders, no shadows — just content on a warm field
 
-### What's Distinctive
-The feature itself: letting a reader request an AI-generated summary of your page/article, choosing which model they want. It's a clever UX for long-form content — lowers the barrier to entry for someone who wants the gist before committing to reading. The warm off-white + clean black icons is a very refined visual choice.
+### UI Elements Worth Noting
+- **AI model selector row** — 5 logos (OpenAI, Anthropic, Google, Perplexity, +1) as clean black SVGs, equal size, evenly spaced horizontally
+- **Warm off-white background** (`#f1f0ec`-ish) — matches yashgodiwala.com and our vienna palette
+- **Centered card with zero chrome** — no borders, no shadows, no rounded corners. Just content on a warm field
+- **Clean black SVG icons** — all AI model logos rendered as monochrome, unified visual language
+- **Light-weight typography** — generous sizing, serif or thin sans-serif
+- **"Request an AI summary"** — the feature itself is the UI innovation. Lowers barrier to long-form content
 
 ### Potential Features to Steal for Vienna
 - **"Ask AI" button on writing pieces** — a subtle CTA that lets a reader get a summary or ask questions about the article
-- **Warm off-white palette** — this screenshot is another vote for `#f1f0ec` as a background option
-- **AI model icon row** — if building any AI feature, this clean horizontal icon selector pattern is sharp
+- **Warm off-white palette** — another vote for `#f1f0ec` as a background option (already implemented at `#f8f5f0`!)
+- **AI model icon row** — clean horizontal icon selector pattern
+- **Zero-chrome card** — no borders/shadows, just content floating on background
 
 ---
 

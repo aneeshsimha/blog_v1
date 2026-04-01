@@ -1,6 +1,7 @@
 ---
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import CursorField from "../components/CursorField.tsx";
 import { ClientRouter } from "astro:transitions";
 import siteConfig from "../data/site.json";
 import "../styles/global.css";
@@ -13,19 +14,44 @@ interface Props {
 const { title = "Aneesh Simha", description = "Builder, writer, and visual experimenter. Exploring ideas at the intersection of technology and creativity." } = Astro.props;
 ---
 
-<html lang="en" class="h-full antialiased dark">
+<html lang="en" class="h-full antialiased">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title === "Aneesh Simha" ? title : `${title} | Aneesh Simha`}</title>
     <meta name="description" content={description} />
+    <script is:inline>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
     <ClientRouter />
   </head>
-  <body class="flex min-h-full flex-col bg-zinc-950 font-sans text-white">
+  <body class="flex min-h-full flex-col bg-background font-sans text-foreground">
+    <div id="reading-progress"></div>
+    <CursorField client:load />
     <Nav name={siteConfig.name} />
     <main class="flex-1 pt-16">
       <slot />
     </main>
     <Footer socials={siteConfig.socials} />
+    <script is:inline>
+      function updateProgress() {
+        var el = document.getElementById('reading-progress');
+        if (!el) return;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) { el.style.width = '0%'; return; }
+        var pct = Math.min(100, (window.scrollY / docHeight) * 100);
+        el.style.width = pct + '%';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+      document.addEventListener('astro:after-swap', updateProgress);
+    </script>
   </body>
 </html>

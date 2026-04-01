@@ -1,0 +1,8 @@
+---
+import Bare from "../layouts/Bare.astro";
+import BreatheCanvas from "../components/BreatheCanvas.tsx";
+---
+
+<Bare title="Breathe">
+  <BreatheCanvas client:only="react" />
+</Bare>

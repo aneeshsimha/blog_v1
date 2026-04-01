@@ -8,25 +8,27 @@ import siteConfig from "../data/site.json";
   <div class="mx-auto max-w-2xl px-6 py-24">
     <div class="fade-in">
       <h1 class="text-4xl font-bold tracking-tight">Contact</h1>
-      <p class="mt-4 leading-relaxed text-zinc-400">
-        Want to get in touch? Send me an email or find me on socials.
+      <p class="mt-4 leading-relaxed text-muted">
+        Want to get in touch? Find me on any of these platforms.
       </p>
     </div>
 
     <div class="fade-in" style="animation-delay: 0.1s">
       <div class="mt-12 space-y-8">
-        <a
-          href={`mailto:${siteConfig.email}`}
-          class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-200"
-        >
-          {siteConfig.email}
-        </a>
-
-        <div>
-          <h2 class="mb-4 text-sm font-medium uppercase tracking-wider text-zinc-500">
-            Elsewhere
-          </h2>
-          <SocialLinks socials={siteConfig.socials} />
+        <div class="flex flex-col gap-4">
+          {siteConfig.socials.map((social: any) => (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex w-fit items-center gap-3 rounded-full border border-btn-secondary-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-btn-secondary-hover-border hover:bg-btn-secondary-hover-bg"
+            >
+              {social.platform}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7v10" />
+              </svg>
+            </a>
+          ))}
         </div>
       </div>
     </div>

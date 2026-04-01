@@ -1,0 +1,196 @@
+{
+  "movies": [
+    {
+      "title": "In the Mood for Love",
+      "year": 2000,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=In+the+Mood+for+Love",
+      "note": "Every frame is a painting. Wong Kar-wai understood longing better than anyone."
+    },
+    {
+      "title": "Stalker",
+      "year": 1979,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Stalker",
+      "note": "The Zone is a mirror. Tarkovsky made patience feel transcendent."
+    },
+    {
+      "title": "Spirited Away",
+      "year": 2001,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Spirited+Away",
+      "note": "Pure imagination rendered with impossible care. Miyazaki's masterpiece."
+    },
+    {
+      "title": "Mulholland Drive",
+      "year": 2001,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Mulholland+Drive",
+      "note": "Lynch proved that confusion can be the most honest emotion."
+    },
+    {
+      "title": "The Thing",
+      "year": 1982,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=The+Thing",
+      "note": "Paranoia as a group activity. Carpenter's practical effects still hold up."
+    },
+    {
+      "title": "Aftersun",
+      "year": 2022,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Aftersun",
+      "note": "Memory as a haunting. The camcorder footage wrecked me."
+    },
+    {
+      "title": "Yi Yi",
+      "year": 2000,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Yi+Yi",
+      "note": "Three hours of life itself. Edward Yang saw the poetry in the mundane."
+    },
+    {
+      "title": "Blade Runner 2049",
+      "year": 2017,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Blade+Runner+2049",
+      "note": "Deakins turned every shot into a cathedral of light. The rare worthy sequel."
+    },
+    {
+      "title": "Parasite",
+      "year": 2019,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Parasite",
+      "note": "Genre-fluid filmmaking at its finest. Bong Joon-ho is a trickster god."
+    },
+    {
+      "title": "Paris, Texas",
+      "year": 1984,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Paris+Texas",
+      "note": "The monologue scene through the one-way mirror is cinema at its most raw."
+    },
+    {
+      "title": "Past Lives",
+      "year": 2023,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=Past+Lives",
+      "note": "In-yun. The space between two people on a bench can hold an entire universe."
+    },
+    {
+      "title": "2001: A Space Odyssey",
+      "year": 1968,
+      "poster": "https://placehold.co/300x450/2c2416/f8f5f0?text=2001+Space+Odyssey",
+      "note": "Kubrick made the void feel sacred. Still the benchmark for cinematic ambition."
+    }
+  ],
+  "music": [
+    {
+      "artist": "Radiohead",
+      "album": "Kid A",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=Kid+A",
+      "note": "The sound of a band burning their playbook. Everything In Its Right Place rewired my brain."
+    },
+    {
+      "artist": "Frank Ocean",
+      "album": "Blonde",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=Blonde",
+      "note": "Vulnerability as architecture. Every listen reveals a new room."
+    },
+    {
+      "artist": "Burial",
+      "album": "Untrue",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=Untrue",
+      "note": "South London rain at 3am. The most evocative electronic album ever made."
+    },
+    {
+      "artist": "Bjork",
+      "album": "Homogenic",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=Homogenic",
+      "note": "Glaciers and beats colliding. Joga is a national anthem for a country that only exists in sound."
+    },
+    {
+      "artist": "Adrianne Lenker",
+      "album": "songs",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=songs",
+      "note": "Recorded in a cabin with a single mic. You can hear the wind. Perfect."
+    },
+    {
+      "artist": "Boards of Canada",
+      "album": "Music Has the Right to Children",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=BoC+MHTRTC",
+      "note": "Nostalgia for a childhood that never happened. Warm analog melancholy."
+    },
+    {
+      "artist": "D'Angelo",
+      "album": "Voodoo",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=Voodoo",
+      "note": "The groove on Playa Playa is legally classified as a controlled substance."
+    },
+    {
+      "artist": "Japanese Breakfast",
+      "album": "Jubilee",
+      "cover": "https://placehold.co/300x300/2c2416/f8f5f0?text=Jubilee",
+      "note": "Choosing joy after grief. Be Sweet is the best pop song of the decade."
+    }
+  ],
+  "books": [
+    {
+      "title": "Godel, Escher, Bach",
+      "author": "Douglas Hofstadter",
+      "cover": "https://placehold.co/300x450/2c2416/f8f5f0?text=GEB",
+      "note": "The book that made me see strange loops everywhere. Changed how I think about thinking."
+    },
+    {
+      "title": "The Wind-Up Bird Chronicle",
+      "author": "Haruki Murakami",
+      "cover": "https://placehold.co/300x450/2c2416/f8f5f0?text=Wind-Up+Bird",
+      "note": "Down the well, into the dream. Murakami's most labyrinthine and rewarding novel."
+    },
+    {
+      "title": "Seeing Like a State",
+      "author": "James C. Scott",
+      "cover": "https://placehold.co/300x450/2c2416/f8f5f0?text=Seeing+Like+a+State",
+      "note": "Legibility as a tool of power. Permanently changed how I view top-down design."
+    },
+    {
+      "title": "Invisible Cities",
+      "author": "Italo Calvino",
+      "cover": "https://placehold.co/300x450/2c2416/f8f5f0?text=Invisible+Cities",
+      "note": "Every city is a poem. Calvino compressed infinite worlds into a few pages each."
+    },
+    {
+      "title": "Designing Data-Intensive Applications",
+      "author": "Martin Kleppmann",
+      "cover": "https://placehold.co/300x450/2c2416/f8f5f0?text=DDIA",
+      "note": "The rare technical book that reads like a novel. My distributed systems bible."
+    },
+    {
+      "title": "The Left Hand of Darkness",
+      "author": "Ursula K. Le Guin",
+      "cover": "https://placehold.co/300x450/2c2416/f8f5f0?text=Left+Hand+of+Darkness",
+      "note": "Le Guin built a world to ask one question about gender, and the answer is frost and love."
+    }
+  ],
+  "interests": [
+    {
+      "label": "Typography",
+      "emoji": "\u2728",
+      "description": "Obsessed with how letterforms shape mood. Currently exploring variable fonts and kinetic type."
+    },
+    {
+      "label": "Fermentation",
+      "emoji": "\ud83e\ude7a",
+      "description": "Making kimchi, kombucha, and sourdough. Controlled rot is the most rewarding hobby."
+    },
+    {
+      "label": "Generative Art",
+      "emoji": "\ud83c\udfa8",
+      "description": "Writing code that makes beautiful things. Shaders, particle systems, L-systems, noise fields."
+    },
+    {
+      "label": "Urban Exploration",
+      "emoji": "\ud83c\udfd7\ufe0f",
+      "description": "Finding hidden staircases, rooftops, and forgotten infrastructure in cities I visit."
+    },
+    {
+      "label": "Mechanical Keyboards",
+      "emoji": "\u2328\ufe0f",
+      "description": "Deep in the thock rabbit hole. Current daily: a hand-lubed board with tactile switches."
+    },
+    {
+      "label": "Long-Distance Running",
+      "emoji": "\ud83c\udfc3",
+      "description": "Trails over roads. The best ideas arrive somewhere around mile six."
+    }
+  ]
+}

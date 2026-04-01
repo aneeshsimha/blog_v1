@@ -1,5 +1,6 @@
 ---
 import NavMobile from "./NavMobile.tsx";
+import ThemeToggle from "./ThemeToggle.astro";
 
 interface Props {
   name: string;
@@ -12,34 +13,44 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/experiments", label: "Experiments" },
   { href: "/writings", label: "Writings" },
+  { href: "/taste", label: "Taste" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 ---
 
-<nav class="fixed top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
+<nav class="fixed top-0 z-50 w-full border-b border-border bg-nav-bg backdrop-blur-md">
   <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-    <a href="/" class="font-mono text-sm font-bold uppercase tracking-wider text-white">
+    <a href="/" class="font-mono text-sm font-bold uppercase tracking-wider text-foreground">
       {name}
     </a>
 
     {/* Desktop */}
     <div class="hidden items-center gap-8 md:flex">
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class={`text-sm transition-colors ${
-            pathname === link.href
-              ? "text-white"
-              : "text-zinc-400 hover:text-white"
-          }`}
-        >
-          {link.label}
-        </a>
-      ))}
+      {links.map((link) => {
+        const isActive = pathname === link.href;
+        return (
+          <a
+            href={link.href}
+            class={`group font-mono text-sm transition-colors ${
+              isActive
+                ? "text-foreground"
+                : "text-muted hover:text-foreground"
+            }`}
+          >
+            <span class={`bracket ${isActive ? "opacity-100" : "opacity-40 group-hover:opacity-80"} group-hover:-translate-x-0.5`}>[</span>
+            {link.label}
+            <span class={`bracket ${isActive ? "opacity-100" : "opacity-40 group-hover:opacity-80"} group-hover:translate-x-0.5`}>]</span>
+          </a>
+        );
+      })}
+      <ThemeToggle />
     </div>
 
-    {/* Mobile - React island */}
-    <NavMobile client:load links={links} pathname={pathname} />
+    {/* Mobile */}
+    <div class="flex items-center gap-3 md:hidden">
+      <ThemeToggle />
+      <NavMobile client:load links={links} pathname={pathname} />
+    </div>
   </div>
 </nav>

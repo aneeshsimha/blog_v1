@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import TastePage from "../components/TastePage.tsx";
+import FadeInView from "../components/FadeInView.tsx";
+import tasteData from "../data/taste.json";
+---
+
+<Base title="Taste">
+  <div class="mx-auto max-w-5xl px-6 py-24">
+    <FadeInView client:visible>
+      <h1 class="text-4xl font-bold tracking-tight">Taste</h1>
+      <p class="mt-4 text-muted">Movies, music, books, and things I care about.</p>
+    </FadeInView>
+    <div class="mt-12">
+      <TastePage client:load data={tasteData} />
+    </div>
+  </div>
+</Base>

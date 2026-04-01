@@ -11,7 +11,7 @@ export default function NavMobile({ links, pathname }: { links: NavLink[]; pathn
   return (
     <div className="md:hidden">
       <button
-        className="text-white"
+        className="text-foreground"
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
       >
@@ -32,19 +32,21 @@ export default function NavMobile({ links, pathname }: { links: NavLink[]; pathn
       </button>
 
       {open && (
-        <div className="fixed left-0 right-0 top-[57px] border-t border-zinc-800 bg-zinc-950 px-6 py-4">
+        <div className="fixed left-0 right-0 top-[57px] border-t border-border bg-background px-6 py-4">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className={`block py-2 text-sm transition-colors ${
+              className={`group block py-2 font-mono text-sm transition-colors ${
                 pathname === link.href
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
+                  ? "text-foreground"
+                  : "text-muted hover:text-foreground"
               }`}
             >
+              <span className={`bracket ${pathname === link.href ? "opacity-100" : "opacity-40 group-hover:opacity-80"}`}>[</span>
               {link.label}
+              <span className={`bracket ${pathname === link.href ? "opacity-100" : "opacity-40 group-hover:opacity-80"}`}>]</span>
             </a>
           ))}
         </div>

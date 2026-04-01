@@ -15,7 +15,7 @@ interface Experiment {
 
 function ExperimentCard({ experiment }: { experiment: Experiment }) {
   const content = (
-    <article className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/50 transition-all hover:border-zinc-600 hover:bg-zinc-900">
+    <article className="overflow-hidden rounded-xl border border-border bg-card-bg transition-all hover:border-btn-secondary-hover-border hover:bg-card-hover-bg">
       {experiment.thumbnail && (
         <div className="relative aspect-video overflow-hidden">
           <img
@@ -28,21 +28,21 @@ function ExperimentCard({ experiment }: { experiment: Experiment }) {
       )}
       <div className="p-5">
         <div className="flex items-center gap-2">
-          <span className="rounded-full bg-zinc-800 px-2.5 py-0.5 font-mono text-xs text-zinc-400">
+          <span className="rounded-full bg-tag-bg px-2.5 py-0.5 font-mono text-xs text-tag-text">
             {experiment.type}
           </span>
-          <time className="font-mono text-xs text-zinc-500">{experiment.date}</time>
+          <time className="font-mono text-xs text-muted">{experiment.date}</time>
         </div>
-        <h3 className="mt-3 text-lg font-semibold tracking-tight text-white transition-colors group-hover:text-zinc-200">
+        <h3 className="mt-3 text-lg font-semibold tracking-tight text-foreground transition-colors">
           {experiment.title}
         </h3>
-        <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-zinc-400">
+        <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-muted">
           {experiment.description}
         </p>
         {experiment.tags.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1.5">
             {experiment.tags.map((tag) => (
-              <span key={tag} className="rounded-full border border-zinc-800 px-2 py-0.5 text-xs text-zinc-500">
+              <span key={tag} className="rounded-full border border-border px-2 py-0.5 text-xs text-muted">
                 {tag}
               </span>
             ))}
@@ -81,7 +81,7 @@ export default function ExperimentsList({ experiments }: { experiments: Experime
     : experiments;
 
   if (experiments.length === 0) {
-    return <p className="text-zinc-500">Experiments coming soon. Check back later!</p>;
+    return <p className="text-muted">Experiments coming soon. Check back later!</p>;
   }
 
   return (
@@ -91,8 +91,8 @@ export default function ExperimentsList({ experiments }: { experiments: Experime
           onClick={() => setActive(null)}
           className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
             active === null
-              ? "bg-white text-zinc-950"
-              : "border border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-white"
+              ? "bg-btn-primary-bg text-btn-primary-text"
+              : "border border-btn-secondary-border text-muted hover:border-btn-secondary-hover-border hover:text-foreground"
           }`}
         >
           All
@@ -103,8 +103,8 @@ export default function ExperimentsList({ experiments }: { experiments: Experime
             onClick={() => setActive(active === tag ? null : tag)}
             className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
               active === tag
-                ? "bg-white text-zinc-950"
-                : "border border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-white"
+                ? "bg-btn-primary-bg text-btn-primary-text"
+                : "border border-btn-secondary-border text-muted hover:border-btn-secondary-hover-border hover:text-foreground"
             }`}
           >
             {tag}

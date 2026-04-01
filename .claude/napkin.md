@@ -10,6 +10,8 @@
 - Will populate real content later; placeholder/fun content is fine for now
 - Prefers short, direct responses — no fluff
 - Cares about colors and vibe, not just content
+- Prefers warm, approachable vibes over cold/techy aesthetics
+- Warm cream light mode (#f8f5f0), warm dark mode (#1a1714), terracotta/amber accents
 
 ## Patterns That Work
 - Dev server was already running on port 3000 before session started
@@ -19,9 +21,10 @@
 - Write tool with `file_text` param — throws InputValidationError, use `content` instead
 
 ## Domain Notes
-- Next.js 16.2.1 with Turbopack, React 19, Tailwind 4, Framer Motion
-- Dark theme: zinc-950 bg, Geist Sans/Mono fonts
-- Content driven by JSON files in content/experiments/ and content/writings/
-- Components: hero, nav, footer, experiment-card, writing-card, fade-in, tag-filter
+- Astro 5.7.5 with React islands, Framer Motion 12, Tailwind CSS 4.1
+- Warm cream/dark palette — terracotta accent (light), amber accent (dark)
+- Geist Sans/Mono fonts, content driven by JSON files in data/experiments/ and data/writings/
+- Components: Hero.tsx, Nav.astro, Footer.astro, CursorField.tsx, EmojiTooltip.tsx, StaggeredGroup.tsx, FadeInView.tsx
+- 5 fun UI elements added: bracketed nav, progress bar, emoji tooltips, staggered scroll animations, cursor-reactive particles
 - User is Aneesh Simha — portfolio/blog site called "vienna"
-- Turbopack root warning exists due to multiple lockfiles — non-breaking
+- Migrated from Next.js to Astro 5 with islands architecture

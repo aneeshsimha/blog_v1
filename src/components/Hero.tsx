@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import TextScramble from "./TextScramble";
 
 interface Social {
   platform: string;
@@ -29,19 +31,19 @@ function Orb() {
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="relative h-48 w-48 sm:h-64 sm:w-64"
       >
-        <div className="absolute inset-0 animate-[spin_12s_linear_infinite] rounded-full bg-gradient-to-tr from-indigo-500/20 via-purple-500/10 to-transparent blur-3xl" />
+        <div className="absolute inset-0 animate-[spin_12s_linear_infinite] rounded-full bg-gradient-to-tr from-amber-500/20 via-orange-400/10 to-transparent blur-3xl" />
         <motion.div
           animate={{ scale: [1, 1.08, 1], rotate: [0, 360] }}
           transition={{
             scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
             rotate: { duration: 20, repeat: Infinity, ease: "linear" },
           }}
-          className="absolute inset-4 rounded-full bg-gradient-to-br from-indigo-500/30 via-violet-600/20 to-fuchsia-500/10 blur-2xl"
+          className="absolute inset-4 rounded-full bg-gradient-to-br from-orange-500/30 via-amber-600/20 to-rose-500/10 blur-2xl"
         />
         <motion.div
           animate={{ scale: [1, 1.12, 1] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-12 rounded-full bg-gradient-to-br from-indigo-400/40 via-violet-500/30 to-purple-600/20 blur-xl"
+          className="absolute inset-12 rounded-full bg-gradient-to-br from-amber-400/40 via-orange-500/30 to-rose-600/20 blur-xl"
         />
       </motion.div>
     </div>
@@ -49,31 +51,48 @@ function Orb() {
 }
 
 export default function Hero({ site }: { site: SiteConfig }) {
+  const [firstVisit, setFirstVisit] = useState(true);
+
+  useEffect(() => {
+    const visited = sessionStorage.getItem("visited");
+    if (visited) {
+      setFirstVisit(false);
+    } else {
+      setTimeout(() => {
+        sessionStorage.setItem("visited", "true");
+      }, 100);
+    }
+  }, []);
+
   return (
     <section className="relative flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-6 text-center">
       <Orb />
       <motion.h1
-        initial={{ opacity: 0, y: 20 }}
+        initial={firstVisit ? { opacity: 0, y: 20 } : false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-5xl font-bold tracking-tight text-white sm:text-7xl"
+        transition={{ duration: 0.6, delay: firstVisit ? 0.3 : 0 }}
+        className="text-5xl font-bold tracking-tight text-foreground sm:text-7xl"
       >
-        {site.name}
+        {firstVisit ? (
+          <TextScramble text={site.name} duration={800} />
+        ) : (
+          site.name
+        )}
       </motion.h1>
 
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
+        initial={firstVisit ? { opacity: 0, y: 20 } : false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.15 }}
-        className="mt-6 max-w-lg text-lg text-zinc-400 sm:text-xl"
+        transition={{ duration: 0.6, delay: firstVisit ? 0.5 : 0 }}
+        className="mt-6 max-w-lg text-lg text-muted sm:text-xl"
       >
         {site.tagline}
       </motion.p>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={firstVisit ? { opacity: 0, y: 20 } : false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        transition={{ duration: 0.6, delay: firstVisit ? 0.7 : 0 }}
         className="mt-8"
       >
         <div className="flex items-center gap-5">
@@ -83,7 +102,7 @@ export default function Hero({ site }: { site: SiteConfig }) {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-400 transition-colors hover:text-white"
+              className="text-muted transition-colors hover:text-foreground"
               aria-label={social.platform}
             >
               {iconPaths[social.icon] ? (
@@ -99,20 +118,20 @@ export default function Hero({ site }: { site: SiteConfig }) {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={firstVisit ? { opacity: 0, y: 20 } : false}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.45 }}
+        transition={{ duration: 0.6, delay: firstVisit ? 0.9 : 0 }}
         className="mt-10 flex flex-wrap justify-center gap-4"
       >
         <a
           href="/experiments"
-          className="rounded-full bg-white px-6 py-3 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-200"
+          className="rounded-full bg-btn-primary-bg px-6 py-3 text-sm font-medium text-btn-primary-text transition-colors hover:bg-btn-primary-hover"
         >
           View Experiments
         </a>
         <a
           href="/writings"
-          className="rounded-full border border-zinc-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:border-zinc-500 hover:bg-zinc-900"
+          className="rounded-full border border-btn-secondary-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-btn-secondary-hover-border hover:bg-btn-secondary-hover-bg"
         >
           Read Writings
         </a>
@@ -120,7 +139,7 @@ export default function Hero({ site }: { site: SiteConfig }) {
           href={site.resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full border border-zinc-700 px-6 py-3 text-sm font-medium text-white transition-colors hover:border-zinc-500 hover:bg-zinc-900"
+          className="rounded-full border border-btn-secondary-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-btn-secondary-hover-border hover:bg-btn-secondary-hover-bg"
         >
           Resume
         </a>

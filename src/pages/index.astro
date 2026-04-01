@@ -3,6 +3,8 @@ import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.tsx";
 import ExperimentCard from "../components/ExperimentCard.astro";
 import WritingCard from "../components/WritingCard.astro";
+import StaggeredGroup from "../components/StaggeredGroup.tsx";
+import FadeInView from "../components/FadeInView.tsx";
 import siteConfig from "../data/site.json";
 
 const experimentFiles = import.meta.glob("../data/experiments/*.json", { eager: true });
@@ -26,47 +28,43 @@ const writings = Object.values(writingFiles)
 
   {experiments.length > 0 && (
     <section class="mx-auto max-w-5xl px-6 py-20">
-      <div class="fade-in">
+      <FadeInView client:visible>
         <div class="flex items-end justify-between">
           <div>
             <h2 class="text-2xl font-bold tracking-tight">Experiments</h2>
-            <p class="mt-2 text-zinc-400">Things I'm building and exploring.</p>
+            <p class="mt-2 text-muted">Things I'm building and exploring.</p>
           </div>
-          <a href="/experiments" class="text-sm text-zinc-400 transition-colors hover:text-white">
+          <a href="/experiments" class="text-sm text-muted transition-colors hover:text-foreground">
             View all &rarr;
           </a>
         </div>
-      </div>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {experiments.map((exp: any, i: number) => (
-          <div class="fade-in" style={`animation-delay: ${i * 0.1}s`}>
-            <ExperimentCard experiment={exp} />
-          </div>
+      </FadeInView>
+      <StaggeredGroup client:visible className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {experiments.map((exp: any) => (
+          <ExperimentCard experiment={exp} />
         ))}
-      </div>
+      </StaggeredGroup>
     </section>
   )}
 
   {writings.length > 0 && (
     <section class="mx-auto max-w-5xl px-6 py-20">
-      <div class="fade-in">
+      <FadeInView client:visible>
         <div class="flex items-end justify-between">
           <div>
             <h2 class="text-2xl font-bold tracking-tight">Writings</h2>
-            <p class="mt-2 text-zinc-400">Thoughts and ideas.</p>
+            <p class="mt-2 text-muted">Thoughts and ideas.</p>
           </div>
-          <a href="/writings" class="text-sm text-zinc-400 transition-colors hover:text-white">
+          <a href="/writings" class="text-sm text-muted transition-colors hover:text-foreground">
             View all &rarr;
           </a>
         </div>
-      </div>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {writings.map((writing: any, i: number) => (
-          <div class="fade-in" style={`animation-delay: ${i * 0.1}s`}>
-            <WritingCard writing={writing} />
-          </div>
+      </FadeInView>
+      <StaggeredGroup client:visible className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {writings.map((writing: any) => (
+          <WritingCard writing={writing} />
         ))}
-      </div>
+      </StaggeredGroup>
     </section>
   )}
 </Base>

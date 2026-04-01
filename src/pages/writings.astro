@@ -1,6 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
 import WritingCard from "../components/WritingCard.astro";
+import FadeInView from "../components/FadeInView.tsx";
+import StaggeredGroup from "../components/StaggeredGroup.tsx";
 
 const writingFiles = import.meta.glob("../data/writings/*.json", { eager: true });
 const writings = Object.values(writingFiles)
@@ -10,20 +12,20 @@ const writings = Object.values(writingFiles)
 
 <Base title="Writings">
   <div class="mx-auto max-w-2xl px-6 py-24">
-    <div class="fade-in">
+    <FadeInView client:visible>
       <h1 class="text-4xl font-bold tracking-tight">Writings</h1>
-      <p class="mt-4 text-zinc-400">Thoughts, ideas, and explorations.</p>
-    </div>
+      <p class="mt-4 text-muted">Thoughts, ideas, and explorations.</p>
+    </FadeInView>
 
-    <div class="mt-12 space-y-4">
+    <div class="mt-12">
       {writings.length === 0 ? (
-        <p class="text-zinc-500">Posts coming soon. Stay tuned!</p>
+        <p class="text-muted">Posts coming soon. Stay tuned!</p>
       ) : (
-        writings.map((w: any, i: number) => (
-          <div class="fade-in" style={`animation-delay: ${i * 0.05}s`}>
+        <StaggeredGroup client:visible className="space-y-4" stagger={0.05}>
+          {writings.map((w: any) => (
             <WritingCard writing={w} />
-          </div>
-        ))
+          ))}
+        </StaggeredGroup>
       )}
     </div>
   </div>

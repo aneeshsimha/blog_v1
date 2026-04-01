@@ -17,17 +17,17 @@ const { experiment } = Astro.props;
   <div class="mx-auto max-w-4xl px-6 py-24">
     <div class="fade-in">
       <div class="flex items-center gap-2">
-        <span class="rounded-full bg-zinc-800 px-2.5 py-0.5 font-mono text-xs text-zinc-400">
+        <span class="rounded-full bg-tag-bg px-2.5 py-0.5 font-mono text-xs text-muted">
           {experiment.type}
         </span>
-        <time class="font-mono text-xs text-zinc-500">
+        <time class="font-mono text-xs text-muted">
           {experiment.date}
         </time>
       </div>
       <h1 class="mt-4 text-4xl font-bold tracking-tight">
         {experiment.title}
       </h1>
-      <p class="mt-4 text-lg leading-relaxed text-zinc-400">
+      <p class="mt-4 text-lg leading-relaxed text-muted">
         {experiment.description}
       </p>
     </div>
@@ -35,7 +35,7 @@ const { experiment } = Astro.props;
     {experiment.images && experiment.images.length > 0 && (
       <div class="mt-12 columns-1 gap-4 sm:columns-2">
         {experiment.images.map((src: string, i: number) => (
-          <div class="fade-in mb-4 overflow-hidden rounded-xl border border-zinc-800" style={`animation-delay: ${i * 0.1}s`}>
+          <div class="fade-in mb-4 overflow-hidden rounded-xl border border-border" style={`animation-delay: ${i * 0.1}s`}>
             <img
               src={src}
               alt={`${experiment.title} - ${i + 1}`}
@@ -52,7 +52,7 @@ const { experiment } = Astro.props;
     {experiment.tags && experiment.tags.length > 0 && (
       <div class="mt-8 flex flex-wrap gap-2">
         {experiment.tags.map((tag: string) => (
-          <span class="rounded-full border border-zinc-800 px-3 py-1 text-xs text-zinc-500">
+          <span class="rounded-full border border-border px-3 py-1 text-xs text-muted">
             {tag}
           </span>
         ))}
