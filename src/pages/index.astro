@@ -8,65 +8,309 @@
     <title>Aneesh Simha</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="grain"></div>
-    <div class="dots"></div>
+    <div class="vignette"></div>
+
+    <header>
+      <span class="logo">as</span>
+      <nav>
+        <a href="/writing">writing</a>
+        <a href="/projects">projects</a>
+        <a href="/now">now</a>
+      </nav>
+    </header>
+
     <main>
-      <h1>aneesh simha</h1>
+      <div class="hero">
+        <div class="name-block">
+          <span class="name-line first">aneesh</span>
+          <span class="name-line second">simha<span class="cursor">_</span></span>
+        </div>
+
+        <div class="meta">
+          <span class="role-label">software engineer</span>
+          <p class="bio">
+            Building software. Writing occasionally.<br />
+            Interested in systems, language, and what they do to each other.
+          </p>
+          <div class="links">
+            <a href="https://github.com/aneeshsimha" target="_blank" rel="noopener noreferrer">
+              github <span class="arrow">↗</span>
+            </a>
+            <a href="https://twitter.com/aneeshsimha" target="_blank" rel="noopener noreferrer">
+              twitter <span class="arrow">↗</span>
+            </a>
+            <a href="mailto:hi@aneeshsimha.com">
+              email <span class="arrow">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </main>
+
+    <footer>
+      <span class="footer-left">est. 2026</span>
+      <span class="footer-right">built with astro</span>
+    </footer>
   </body>
 </html>
 
 <style>
+  :root {
+    --bg:       #0d0a08;
+    --fg:       #e6dace;
+    --accent:   #c4572a;
+    --dim:      #5e5248;
+    --dim2:     #8c7d73;
+    --rule:     #1f1a17;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-mono:    'DM Mono', 'Courier New', monospace;
+  }
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #8b4f3a;
-    color: #f5ece0;
-    overflow: hidden;
-    position: relative;
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .dots {
-    position: fixed;
-    inset: 0;
-    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1.5px, transparent 1.5px);
-    background-size: 28px 28px;
-    pointer-events: none;
-    z-index: 1;
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-mono);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
   }
+
+  /* ── Textures ─────────────────────────────── */
 
   .grain {
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.042'/%3E%3C/svg%3E");
     pointer-events: none;
-    z-index: 2;
+    z-index: 50;
   }
+
+  .vignette {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 110%, rgba(196,87,42,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% -10%, rgba(196,87,42,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Header ───────────────────────────────── */
+
+  header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.75rem;
+    border-bottom: 1px solid var(--rule);
+    animation: fadeUp 0.55s ease both;
+  }
+
+  .logo {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+
+  nav {
+    display: flex;
+    gap: 2.25rem;
+  }
+
+  nav a {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--dim2);
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+
+  nav a:hover {
+    color: var(--fg);
+  }
+
+  /* ── Main / Hero ──────────────────────────── */
 
   main {
     position: relative;
-    z-index: 3;
-    text-align: center;
-    padding: 2rem;
+    z-index: 10;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 5rem 2.75rem 4.5rem;
   }
 
-  h1 {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    font-size: clamp(3rem, 12vw, 8rem);
-    font-weight: 800;
-    font-optical-sizing: auto;
-    letter-spacing: -0.03em;
-    line-height: 1;
+  .hero {
+    width: 100%;
+  }
+
+  /* ── Name block ───────────────────────────── */
+
+  .name-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.87;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.65s 0.08s ease both;
+  }
+
+  .name-line {
+    display: block;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(4.5rem, 13.5vw, 13.5rem);
+    letter-spacing: -0.025em;
+    color: var(--fg);
+  }
+
+  .name-line.second {
+    padding-left: clamp(2rem, 9vw, 11rem);
+  }
+
+  .cursor {
+    color: var(--accent);
+    font-style: normal;
+    font-family: var(--font-mono);
+    font-size: 0.65em;
+    vertical-align: 0.08em;
+    animation: blink 1.15s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ── Meta section ─────────────────────────── */
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    max-width: 440px;
+    animation: fadeUp 0.65s 0.2s ease both;
+  }
+
+  .role-label {
+    font-size: 0.67rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .bio {
+    font-size: 0.825rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--dim2);
+  }
+
+  .links {
+    display: flex;
+    gap: 1.75rem;
+    padding-top: 0.25rem;
+  }
+
+  .links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.07em;
+    color: var(--fg);
+    text-decoration: none;
+    transition: color 0.18s ease;
+  }
+
+  .links a:hover {
+    color: var(--accent);
+  }
+
+  .arrow {
+    display: inline-block;
+    transition: transform 0.18s ease;
+  }
+
+  .links a:hover .arrow {
+    transform: translate(2px, -2px);
+  }
+
+  /* ── Footer ───────────────────────────────── */
+
+  footer {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2.75rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--dim);
+    animation: fadeUp 0.65s 0.32s ease both;
+  }
+
+  /* ── Animations ───────────────────────────── */
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Responsive ───────────────────────────── */
+
+  @media (max-width: 640px) {
+    header {
+      padding: 1.25rem 1.5rem;
+    }
+
+    nav {
+      gap: 1.5rem;
+    }
+
+    main {
+      padding: 3.5rem 1.5rem 3rem;
+      align-items: flex-start;
+    }
+
+    .name-line.second {
+      padding-left: clamp(1rem, 5vw, 3rem);
+    }
+
+    .links {
+      gap: 1.25rem;
+    }
+
+    footer {
+      padding: 0.9rem 1.5rem;
+    }
   }
 </style>
