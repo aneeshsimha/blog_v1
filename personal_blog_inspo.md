@@ -732,4 +732,52 @@ A clean UI panel from a product called Lucis. The panel says "Request an AI summ
 
 ---
 
+## 18. annieis.hot
+
+**URL:** https://annieis.hot
+**Logged:** 2026-04-01
+
+*(Site serves minified React — design notes to be filled in after manual observation)*
+
+---
+
+## 19. a-star.co
+
+**URL:** https://a-star.co/
+**Logged:** 2026-04-01
+**Type:** VC firm site — inspiration for minimal branding and portfolio grid layout
+
+### Visual Design
+- **Color palette:** Clean, minimal — neutral tones (black, white, gray). Lets the portfolio logos provide visual interest
+- **Typography:** Headline/body hierarchy with clean sans-serif. The "A*" branding leans into the mathematical/algorithmic symbol
+- **Layout:** Hero tagline → logo grid (portfolio companies) → philosophy section (three value pillars) → footer with contact/social
+- **Effects:** Cursor-following smoke/particle trail — wispy, fluid particles that follow mouse movement across the page. Adds a tactile, atmospheric layer to an otherwise minimal design
+
+### Vibe & Personality
+Conviction-led, relationship-forward. Tagline: "Guiding outliers from idea to IPO." Positions itself as moving "from transactional capital to meaningful partnerships." Portfolio logos (Airbnb, Uber, SpaceX, PayPal) do the credibility work — the design stays out of the way. The `A*` name itself (pathfinding algorithm) signals computational sophistication without saying it.
+
+### UX Flow
+1. **Land** → hero tagline
+2. **Scan** → portfolio logo grid (10+ companies, recognizable brands)
+3. **Read** → three-pillar philosophy section
+4. **Connect** → footer with email, LinkedIn, Twitter
+
+Three-page nav: Team, Companies, Contact. Simple and direct.
+
+### UI Elements Worth Noting
+- **Cursor-following smoke trail** — wispy particles that follow mouse movement, creating an atmospheric, tactile feel. Likely canvas-based or WebGL particle system with fade-out and turbulence
+- **Logo grid as social proof** — portfolio thumbnails do all the visual/credibility work on a neutral background
+- **Three-pillar philosophy layout** — concise value statements with headers, no paragraphs
+- **"A*" as brand** — algorithmic/mathematical naming is distinctive and memorable
+- **Minimal nav (3 items)** — Team, Companies, Contact. Nothing else needed
+
+### Potential Features to Steal for Vienna
+- **Cursor smoke trail** — a wispy particle effect that follows the mouse. Could replace or complement the existing CursorField.tsx — smoke has a more organic, atmospheric feel than geometric particles
+- **Logo/thumbnail grid** — clean grid of project logos or experiment thumbnails on a neutral background, letting the content provide the color
+- **Three-pillar value section** — concise "what I care about" section with short headers and one-line descriptions
+- **Extreme nav simplicity** — only the pages that matter, nothing decorative
+- **Let the work speak** — portfolio-forward design where the projects are the hero, not the chrome
+
+---
+
 *Add new entries below as you find more sites.*

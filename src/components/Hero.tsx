@@ -117,33 +117,6 @@ export default function Hero({ site }: { site: SiteConfig }) {
         </div>
       </motion.div>
 
-      <motion.div
-        initial={firstVisit ? { opacity: 0, y: 20 } : false}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: firstVisit ? 0.9 : 0 }}
-        className="mt-10 flex flex-wrap justify-center gap-4"
-      >
-        <a
-          href="/experiments"
-          className="rounded-full bg-btn-primary-bg px-6 py-3 text-sm font-medium text-btn-primary-text transition-colors hover:bg-btn-primary-hover"
-        >
-          View Experiments
-        </a>
-        <a
-          href="/writings"
-          className="rounded-full border border-btn-secondary-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-btn-secondary-hover-border hover:bg-btn-secondary-hover-bg"
-        >
-          Read Writings
-        </a>
-        <a
-          href={site.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full border border-btn-secondary-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-btn-secondary-hover-border hover:bg-btn-secondary-hover-bg"
-        >
-          Resume
-        </a>
-      </motion.div>
     </section>
   );
 }
