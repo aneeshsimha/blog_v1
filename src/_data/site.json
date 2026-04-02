@@ -1,0 +1,9 @@
+{
+  "name": "Aneesh Simha",
+  "bio": "Building software. Writing occasionally. Interested in systems, language, and what they do to each other.",
+  "links": [
+    { "label": "github", "url": "https://github.com/aneeshsimha" },
+    { "label": "twitter", "url": "https://twitter.com/aneeshsimha" },
+    { "label": "email", "url": "mailto:hi@aneeshsimha.com" }
+  ]
+}
