@@ -3,11 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "dev": "npx @11ty/eleventy --serve --config=eleventy.config.ts",
+    "build": "npx @11ty/eleventy --config=eleventy.config.ts"
   },
-  "dependencies": {
-    "astro": "^6.1.2"
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "typescript": "^5.7.0"
   }
 }
