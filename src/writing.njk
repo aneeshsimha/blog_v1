@@ -1,6 +1,20 @@
 ---
 layout: base.njk
-title: writing
+title: Writing
+permalink: /writing/
+description: "Writing by Aneesh Simha on systems, software, and language."
 ---
-<h1>writing</h1>
-<p>nothing here yet.</p>
+<section class="writing-list">
+  <h1>Writing</h1>
+  {% for post in collections.posts %}
+  <a href="{{ post.url }}" class="post-card">
+    <h2 class="post-card__title">{{ post.data.title }}</h2>
+    <div class="post-card__meta">
+      <time datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | dateFormat }}</time>
+      <span>{{ post.content | readingTime }} min read</span>
+    </div>
+  </a>
+  {% else %}
+  <p>Nothing here yet.</p>
+  {% endfor %}
+</section>

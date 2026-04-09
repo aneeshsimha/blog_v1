@@ -1,10 +1,10 @@
 ---
 layout: base.njk
+bodyClass: page-home
+mainClass: home full-bleed
+description: "Aneesh Simha — building software at the intersection of systems and language."
 ---
-<h1>{{ site.name }}</h1>
-<p>{{ site.bio }}</p>
-<p>
-  {%- for link in site.links %}
-  <a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %} /{% endif %}
-  {%- endfor %}
-</p>
+<section class="hero">
+  <h1 class="hero__name">{{ site.name }}</h1>
+  <p class="hero__tagline">{{ site.tagline }}</p>
+</section>

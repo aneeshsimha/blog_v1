@@ -1,6 +1,26 @@
 ---
 layout: base.njk
-title: projects
+title: Work
+permalink: /work/
+description: "Selected work by Aneesh Simha."
 ---
-<h1>projects</h1>
-<p>nothing here yet.</p>
+<section class="work-list">
+  <h1>Work</h1>
+  <div class="work-grid">
+    {% for project in collections.projects %}
+    <a href="{{ project.url }}" class="project-card">
+      {% if project.data.thumbnail %}
+      <div class="project-card__thumb-wrap">
+        <img class="project-card__thumb" src="{{ project.data.thumbnail }}" alt="" loading="lazy">
+      </div>
+      {% endif %}
+      <div class="project-card__body">
+        <h2 class="project-card__title">{{ project.data.title }}</h2>
+        <p class="project-card__descriptor">{{ project.data.descriptor }}</p>
+      </div>
+    </a>
+    {% else %}
+    <p>Nothing here yet.</p>
+    {% endfor %}
+  </div>
+</section>

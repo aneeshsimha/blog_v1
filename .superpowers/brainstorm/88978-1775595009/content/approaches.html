@@ -1,0 +1,110 @@
+<h2>Three directions for the full redesign</h2>
+<p class="subtitle">Same chart, different emphasis. Click the one that pulls you.</p>
+
+<div class="cards" style="display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 2rem;">
+
+  <!-- Approach A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; cursor: pointer;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 280px;">
+      <!-- Visual preview -->
+      <div style="position: relative; overflow: hidden; background: #0c0a09;">
+        <!-- Deep atmospheric layers -->
+        <div style="position: absolute; inset: -20px; background: radial-gradient(ellipse at 25% 70%, rgba(13,26,42,0.6) 0%, transparent 60%);"></div>
+        <div style="position: absolute; inset: -20px; background: radial-gradient(ellipse at 75% 30%, rgba(107,58,26,0.08) 0%, transparent 50%); animation: drift-a 25s ease-in-out infinite alternate;"></div>
+        <!-- Subtle gold source -->
+        <div style="position: absolute; bottom: -10%; right: 30%; width: 250px; height: 180px; background: radial-gradient(ellipse, rgba(200,132,30,0.1) 0%, transparent 60%); animation: breathe-a 10s ease-in-out infinite;"></div>
+        <!-- Grain -->
+        <div style="position: absolute; inset: 0; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>'); opacity: 0.04; mix-blend-mode: overlay;"></div>
+        <!-- Content -->
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; padding: 24px;">
+          <div style="font-family: Georgia, serif; font-size: 28px; color: rgba(240,234,214,0.9); letter-spacing: -0.02em; text-shadow: 0 0 50px rgba(200,132,30,0.06); margin-bottom: 10px;">Aneesh Simha</div>
+          <div style="color: rgba(240,234,214,0.35); font-size: 12px; letter-spacing: 0.02em;">Software engineer. Systems and language.</div>
+        </div>
+      </div>
+      <!-- Description -->
+      <div style="padding: 28px; display: flex; flex-direction: column; justify-content: center;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(200,132,30,0.6); margin-bottom: 10px;">A — Chart-Faithful Depth</div>
+        <div style="font-size: 16px; color: rgba(240,234,214,0.9); margin-bottom: 12px; font-weight: 600; line-height: 1.3;">Follow the readings closely.<br>The atmosphere IS the site.</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.8;">
+          Deep ocean background with layered movement. Gold as distant light source — barely there, magnetic. Maximum texture, minimum content. The visitor enters a space and senses depth. Closest to the Tarkovsky frame.<br><br>
+          <strong style="color: rgba(255,255,255,0.5);">Feels like:</strong> Walking into a dark gallery at dusk<br>
+          <strong style="color: rgba(255,255,255,0.5);">Risk:</strong> Could feel heavy or withholding without content
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Approach B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; cursor: pointer;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 280px;">
+      <!-- Visual preview -->
+      <div style="position: relative; overflow: hidden; background: #110f0d;">
+        <!-- Warmer atmospheric layers -->
+        <div style="position: absolute; inset: -20px; background: radial-gradient(ellipse at 40% 50%, rgba(13,26,42,0.3) 0%, transparent 50%);"></div>
+        <div style="position: absolute; inset: -20px; background: radial-gradient(ellipse at 60% 60%, rgba(139,74,42,0.12) 0%, rgba(200,132,30,0.06) 30%, transparent 55%); animation: drift-b 20s ease-in-out infinite alternate;"></div>
+        <!-- Generous gold -->
+        <div style="position: absolute; bottom: 0; left: 40%; width: 300px; height: 220px; background: radial-gradient(ellipse, rgba(200,132,30,0.14) 0%, rgba(180,110,30,0.06) 35%, transparent 60%); animation: breathe-b 8s ease-in-out infinite;"></div>
+        <!-- Grain -->
+        <div style="position: absolute; inset: 0; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>'); opacity: 0.05; mix-blend-mode: overlay;"></div>
+        <!-- Content -->
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; padding: 24px;">
+          <div style="font-family: Georgia, serif; font-size: 28px; color: rgba(240,234,214,0.95); letter-spacing: -0.01em; text-shadow: 0 0 40px rgba(200,132,30,0.1); margin-bottom: 10px;">Aneesh Simha</div>
+          <div style="color: rgba(240,234,214,0.45); font-size: 12px; letter-spacing: 0.02em;">I build the systems underneath.</div>
+        </div>
+      </div>
+      <!-- Description -->
+      <div style="padding: 28px; display: flex; flex-direction: column; justify-content: center;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(200,132,30,0.6); margin-bottom: 10px;">B — Ocean's 11 Warmth</div>
+        <div style="font-size: 16px; color: rgba(240,234,214,0.9); margin-bottom: 12px; font-weight: 600; line-height: 1.3;">Chart depth + confident charm.<br>The gold is generous.</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.8;">
+          Same textured darkness but the gold is more present — like amber casino lighting. The warmth hits you immediately. Confident, not mysterious. The atmosphere invites rather than guards. Grain and texture still there but the overall feeling is <em>warm</em>.<br><br>
+          <strong style="color: rgba(255,255,255,0.5);">Feels like:</strong> A warm room with good lighting where someone interesting lives<br>
+          <strong style="color: rgba(255,255,255,0.5);">Risk:</strong> Could lose the Scorpio depth if pushed too warm
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Approach C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)" style="border: 1px solid rgba(200,132,30,0.12); border-radius: 12px; overflow: hidden; cursor: pointer;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 280px;">
+      <!-- Visual preview -->
+      <div style="position: relative; overflow: hidden; background: #0e0c0b;">
+        <!-- Layered atmospheric depth -->
+        <div style="position: absolute; inset: -30px; background: radial-gradient(ellipse at 20% 70%, rgba(13,26,42,0.45) 0%, transparent 55%); animation: drift-c1 35s ease-in-out infinite alternate;"></div>
+        <div style="position: absolute; inset: -30px; background: radial-gradient(ellipse at 70% 40%, rgba(107,58,26,0.1) 0%, rgba(200,132,30,0.04) 25%, transparent 50%); animation: drift-c2 22s ease-in-out infinite alternate;"></div>
+        <!-- Gold light — warm and breathing, between A and B -->
+        <div style="position: absolute; bottom: -5%; right: 25%; width: 280px; height: 200px; background: radial-gradient(ellipse, rgba(200,132,30,0.12) 0%, rgba(160,100,30,0.05) 35%, transparent 60%); animation: breathe-c 9s ease-in-out infinite;"></div>
+        <!-- Subtle secondary warmth -->
+        <div style="position: absolute; top: 20%; left: 10%; width: 150px; height: 150px; background: radial-gradient(circle, rgba(200,132,30,0.03) 0%, transparent 60%);"></div>
+        <!-- Grain -->
+        <div style="position: absolute; inset: 0; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>'); opacity: 0.045; mix-blend-mode: overlay;"></div>
+        <!-- Content -->
+        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; padding: 24px;">
+          <div style="font-family: Georgia, serif; font-size: 28px; color: rgba(240,234,214,0.95); letter-spacing: -0.015em; text-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 45px rgba(200,132,30,0.08); margin-bottom: 10px;">Aneesh Simha</div>
+          <div style="color: rgba(240,234,214,0.4); font-size: 12px; letter-spacing: 0.02em;">I build the systems underneath.</div>
+        </div>
+      </div>
+      <!-- Description -->
+      <div style="padding: 28px; display: flex; flex-direction: column; justify-content: center; background: rgba(200,132,30,0.02);">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(200,132,30,0.7); margin-bottom: 10px;">C — Warm Depth (recommended)</div>
+        <div style="font-size: 16px; color: rgba(240,234,214,0.9); margin-bottom: 12px; font-weight: 600; line-height: 1.3;">The depth is real. The warmth is immediate.<br>Eloquent craftsman energy.</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.8;">
+          Chart-faithful depth and texture — the ocean layers, the shifting grain, the breathing gold. But the gold is confident and present enough that the first feeling is <em>warmth</em>, not mystery. You sense the depth <em>after</em> the warmth lands. Ocean's 11 meets the chart: competence as charisma, craft as style.<br><br>
+          <strong style="color: rgba(255,255,255,0.5);">Feels like:</strong> Entering a space built by someone whose taste you immediately trust<br>
+          <strong style="color: rgba(255,255,255,0.5);">Works without content:</strong> The atmosphere carries it alone
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes drift-a { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(6px,4px) scale(1.03); } }
+  @keyframes breathe-a { 0%,100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.06); } }
+  @keyframes drift-b { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-5px,3px) scale(1.02); } }
+  @keyframes breathe-b { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+  @keyframes drift-c1 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(5px,3px) scale(1.03); } }
+  @keyframes drift-c2 { 0% { transform: translate(0,0) scale(1.01); } 100% { transform: translate(-4px,2px) scale(1); } }
+  @keyframes breathe-c { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.07); } }
+</style>

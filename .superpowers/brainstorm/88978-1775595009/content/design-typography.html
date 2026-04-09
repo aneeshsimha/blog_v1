@@ -1,0 +1,124 @@
+<h2>Design Section 2: Typography</h2>
+<p class="subtitle">The voice of the page before anyone reads a word</p>
+
+<!-- Current vs candidates -->
+<div style="margin: 2rem 0;">
+  <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 16px;">Display Font — 3 directions</div>
+
+  <div class="cards" style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+
+    <!-- Option A: Keep DM Serif Display -->
+    <div class="card" data-choice="keep-dm" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; cursor: pointer;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 180px;">
+        <div style="background: #0e0c0b; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px; position: relative; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 70%, rgba(200,132,30,0.06) 0%, transparent 60%);"></div>
+          <div style="position: relative; z-index: 1; text-align: center;">
+            <div style="font-family: 'DM Serif Display', Georgia, serif; font-size: 36px; color: rgba(240,234,214,0.95); letter-spacing: -0.02em; text-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 40px rgba(200,132,30,0.06);">Aneesh Simha</div>
+            <div style="font-family: 'Inter', system-ui, sans-serif; color: rgba(240,234,214,0.4); font-size: 13px; margin-top: 10px;">I build the systems underneath.</div>
+          </div>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-bottom: 6px;">A — Keep DM Serif Display</div>
+          <div style="font-size: 14px; color: rgba(240,234,214,0.8); margin-bottom: 8px; font-weight: 600;">Warm, reliable, already loaded</div>
+          <div style="font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.7;">
+            Clean transitional serif. Already works with the palette. Add texture through text-shadow and letter-spacing rather than changing the face. Practical — no new font loading.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option B: Cormorant Garamond -->
+    <div class="card" data-choice="cormorant" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; cursor: pointer;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 180px;">
+        <div style="background: #0e0c0b; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px; position: relative; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 70%, rgba(200,132,30,0.06) 0%, transparent 60%);"></div>
+          <div style="position: relative; z-index: 1; text-align: center;">
+            <div style="font-family: 'Cormorant Garamond', 'Garamond', Georgia, serif; font-size: 40px; font-weight: 300; color: rgba(240,234,214,0.95); letter-spacing: 0.01em; text-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 40px rgba(200,132,30,0.06);">Aneesh Simha</div>
+            <div style="font-family: 'Inter', system-ui, sans-serif; color: rgba(240,234,214,0.4); font-size: 13px; margin-top: 10px;">I build the systems underneath.</div>
+          </div>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-bottom: 6px;">B — Cormorant Garamond</div>
+          <div style="font-size: 14px; color: rgba(240,234,214,0.8); margin-bottom: 8px; font-weight: 600;">Lineage, elegance, carved stone</div>
+          <div style="font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.7;">
+            Based on Garamond — one of the oldest type families in the West. Light weight at large sizes feels inscribed, not printed. High contrast between thick and thin strokes gives it that letterpress quality. Free on Google Fonts.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Option C: Playfair Display -->
+    <div class="card" data-choice="playfair" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; cursor: pointer;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; min-height: 180px;">
+        <div style="background: #0e0c0b; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 32px; position: relative; overflow: hidden;">
+          <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 70%, rgba(200,132,30,0.06) 0%, transparent 60%);"></div>
+          <div style="position: relative; z-index: 1; text-align: center;">
+            <div style="font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: 400; color: rgba(240,234,214,0.95); letter-spacing: -0.01em; text-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 40px rgba(200,132,30,0.06);">Aneesh Simha</div>
+            <div style="font-family: 'Inter', system-ui, sans-serif; color: rgba(240,234,214,0.4); font-size: 13px; margin-top: 10px;">I build the systems underneath.</div>
+          </div>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-bottom: 6px;">C — Playfair Display</div>
+          <div style="font-size: 14px; color: rgba(240,234,214,0.8); margin-bottom: 8px; font-weight: 600;">Bold presence, editorial weight</div>
+          <div style="font-size: 11px; color: rgba(255,255,255,0.35); line-height: 1.7;">
+            High-contrast transitional design inspired by Baskerville. More dramatic thick-thin variation. Feels like a magazine masthead — editorial authority. Could be too loud for "eloquent craftsman" energy.
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Body font -->
+<div style="margin: 2.5rem 0;">
+  <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 16px;">Body Font — Inter vs warmer alternatives</div>
+
+  <div class="cards" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+
+    <div class="card" data-choice="keep-inter" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; cursor: pointer;">
+      <div style="font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 10px;">Keep Inter</div>
+      <div style="font-family: 'Inter', system-ui, sans-serif; font-size: 14px; color: rgba(240,234,214,0.75); line-height: 1.75; max-width: 45ch;">
+        I build infrastructure for language processing. Compilers, pipelines, the systems underneath. I think about what breaks. Good systems fail honestly — they tell you where and why.
+      </div>
+      <div style="font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 10px;">Clean, neutral, widely used. Already loaded. Professional but not warm.</div>
+    </div>
+
+    <div class="card" data-choice="source-serif" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; cursor: pointer;">
+      <div style="font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 10px;">Source Serif 4 (body serif)</div>
+      <div style="font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif; font-size: 14px; color: rgba(240,234,214,0.75); line-height: 1.75; max-width: 45ch;">
+        I build infrastructure for language processing. Compilers, pipelines, the systems underneath. I think about what breaks. Good systems fail honestly — they tell you where and why.
+      </div>
+      <div style="font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 10px;">Warm serif body text. Matches the letterpress display. Could be too much serif if paired with Cormorant.</div>
+    </div>
+
+    <div class="card" data-choice="libre-franklin" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; cursor: pointer;">
+      <div style="font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 10px;">Libre Franklin</div>
+      <div style="font-family: 'Libre Franklin', 'Franklin Gothic', system-ui, sans-serif; font-size: 14px; color: rgba(240,234,214,0.75); line-height: 1.75; max-width: 45ch;">
+        I build infrastructure for language processing. Compilers, pipelines, the systems underneath. I think about what breaks. Good systems fail honestly — they tell you where and why.
+      </div>
+      <div style="font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 10px;">Warmer sans-serif than Inter. More personality. Good serif pairing. Free.</div>
+    </div>
+
+    <div class="card" data-choice="newsreader" onclick="toggleSelect(this)" style="border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; cursor: pointer;">
+      <div style="font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 10px;">Newsreader</div>
+      <div style="font-family: 'Newsreader', Georgia, serif; font-size: 14px; color: rgba(240,234,214,0.75); line-height: 1.75; max-width: 45ch;">
+        I build infrastructure for language processing. Compilers, pipelines, the systems underneath. I think about what breaks. Good systems fail honestly — they tell you where and why.
+      </div>
+      <div style="font-size: 10px; color: rgba(255,255,255,0.25); margin-top: 10px;">Editorial serif. Designed for long-form reading. Warm but structured. Pairs well with geometric display serifs.</div>
+    </div>
+
+  </div>
+</div>
+
+<div style="margin-top: 1.5rem; padding: 14px; background: rgba(200,132,30,0.03); border-radius: 8px; border: 1px solid rgba(200,132,30,0.08);">
+  <div style="font-size: 12px; color: rgba(240,234,214,0.5); line-height: 1.7;">
+    <strong style="color: rgba(200,132,30,0.6);">My lean:</strong> Cormorant Garamond for display (lineage + carved quality) with Inter kept for body (the contrast between ornate headers and clean body creates tension that works). But if you want full warmth, Cormorant + Newsreader is rich.
+    <br><br>
+    <em style="color: rgba(255,255,255,0.3);">Note: browser preview uses system fallbacks. The actual fonts would be self-hosted via @fontsource like current setup.</em>
+  </div>
+</div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@400;500&family=Source+Serif+4:wght@400;500&family=Libre+Franklin:wght@400;500&family=Newsreader:wght@400;500&display=swap" rel="stylesheet">

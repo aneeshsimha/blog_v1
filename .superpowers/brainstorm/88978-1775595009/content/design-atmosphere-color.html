@@ -1,0 +1,146 @@
+<h2>Design Section 1: Atmosphere & Color</h2>
+<p class="subtitle">The foundation everything else sits on</p>
+
+<!-- Color Palette -->
+<div style="margin: 2rem 0;">
+  <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 12px;">Evolved Palette</div>
+  <div style="display: flex; gap: 4px; margin-bottom: 20px;">
+    <!-- Background tones -->
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #0e0c0b; border: 1px solid rgba(255,255,255,0.06);"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">base<br>#0e0c0b</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #1a1714;"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">mid<br>#1a1714</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #0d1a2a;"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">ocean/indigo<br>#0d1a2a</div>
+    </div>
+    <!-- Warm spectrum -->
+    <div style="width: 1px; background: rgba(255,255,255,0.06); margin: 0 8px;"></div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #6b3a1a;"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">terracotta<br>#6b3a1a</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #8b4a2a;"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">earth<br>#8b4a2a</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #b8762a;"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">rust<br>#b8762a</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #c8841e; box-shadow: 0 0 20px rgba(200,132,30,0.2);"></div>
+      <div style="font-size: 9px; color: rgba(200,132,30,0.6); text-align: center; font-weight: 600;">saffron gold<br>#c8841e</div>
+    </div>
+    <!-- Text -->
+    <div style="width: 1px; background: rgba(255,255,255,0.06); margin: 0 8px;"></div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #f0ead6;"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">cream<br>#f0ead6</div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; gap: 4px;">
+      <div style="height: 64px; border-radius: 8px; background: #1e2a3a;"></div>
+      <div style="font-size: 9px; color: rgba(255,255,255,0.3); text-align: center;">navy<br>#1e2a3a</div>
+    </div>
+  </div>
+
+  <div style="font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.7; padding: 12px; background: rgba(255,255,255,0.02); border-radius: 6px;">
+    <strong style="color: rgba(240,234,214,0.6);">What changed:</strong> Base darkened slightly (warmer). Gold shifted from brass (#d4922a) to saffron (#c8841e). Added terracotta mid-tone (#6b3a1a). Ocean deepened to true indigo (#0d1a2a). The warm spectrum now has a full gradient: indigo → base → mid → terracotta → earth → rust → saffron gold.
+  </div>
+</div>
+
+<!-- Atmosphere layers -->
+<div style="margin: 2.5rem 0;">
+  <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 12px;">Atmospheric Layers (5 → 6)</div>
+
+  <div style="position: relative; height: 360px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.04);">
+    <!-- Layer 1: Base gradient -->
+    <div style="position: absolute; inset: 0; background: linear-gradient(160deg, #0e0c0b 0%, #1a1714 25%, #0d1a2a 65%, #080c14 100%);"></div>
+    <!-- Layer 2: Cool drift (ocean current) -->
+    <div style="position: absolute; inset: -40px; background: radial-gradient(ellipse at 20% 65%, rgba(13,26,42,0.45) 0%, transparent 55%); animation: l2drift 40s ease-in-out infinite alternate;"></div>
+    <!-- Layer 3: Warm drift -->
+    <div style="position: absolute; inset: -40px; background: radial-gradient(ellipse at 70% 40%, rgba(107,58,26,0.1) 0%, rgba(200,132,30,0.04) 25%, transparent 55%); animation: l3drift 28s ease-in-out infinite alternate;"></div>
+    <!-- Layer 4: Atmospheric haze (NEW) -->
+    <div style="position: absolute; inset: -20px; background: radial-gradient(ellipse at 50% 50%, rgba(200,132,30,0.02) 0%, transparent 60%); animation: l4haze 50s ease-in-out infinite alternate;"></div>
+    <!-- Layer 5: Film grain -->
+    <div style="position: absolute; inset: 0; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 300%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>'); opacity: 0.045; mix-blend-mode: overlay;"></div>
+    <!-- Layer 6: Breathing gold -->
+    <div style="position: absolute; bottom: -5%; right: 25%; width: 60%; height: 55%; background: radial-gradient(ellipse, rgba(200,132,30,0.12) 0%, rgba(160,100,30,0.05) 30%, transparent 60%); animation: l6breathe 9s ease-in-out infinite;"></div>
+
+    <!-- Layer labels -->
+    <div style="position: relative; z-index: 2; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="display: inline-flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(13,26,42,0.8); border: 1px solid rgba(255,255,255,0.1);"></div>
+          <span style="font-size: 10px; color: rgba(255,255,255,0.35);">1. Base gradient — dark warmth → indigo depth</span>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(13,26,42,0.6); border: 1px solid rgba(255,255,255,0.1);"></div>
+          <span style="font-size: 10px; color: rgba(255,255,255,0.35);">2. Cool drift — 40s cycle, deep ocean current (Shatabhishak)</span>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(139,74,42,0.4); border: 1px solid rgba(255,255,255,0.1);"></div>
+          <span style="font-size: 10px; color: rgba(255,255,255,0.35);">3. Warm drift — 28s cycle, earth undertone (Ardra post-storm)</span>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(200,132,30,0.15); border: 1px solid rgba(255,255,255,0.1);"></div>
+          <span style="font-size: 10px; color: rgba(255,255,255,0.35);">4. Atmospheric haze — 50s cycle, drifting warmth (Swati wind) <span style="color: rgba(200,132,30,0.5);">NEW</span></span>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);"></div>
+          <span style="font-size: 10px; color: rgba(255,255,255,0.35);">5. Film grain — static, tactile (Hasta handmade)</span>
+        </div>
+        <div style="display: inline-flex; align-items: center; gap: 8px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(200,132,30,0.25); border: 1px solid rgba(200,132,30,0.2);"></div>
+          <span style="font-size: 10px; color: rgba(255,255,255,0.35);">6. Breathing gold — 9s cycle, the light source (Magha sunrise)</span>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <div style="font-family: Georgia, serif; font-size: 26px; color: rgba(240,234,214,0.95); text-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 0 45px rgba(200,132,30,0.07); letter-spacing: -0.01em;">Aneesh Simha</div>
+        <div style="color: rgba(240,234,214,0.38); font-size: 11px; margin-top: 8px; letter-spacing: 0.02em;">the atmosphere is alive — watch the layers shift</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- What's changing from current -->
+<div style="margin: 2rem 0;">
+  <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 12px;">Changes from current v1.5</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+    <div style="padding: 14px; background: rgba(255,255,255,0.02); border-radius: 8px; font-size: 11px; line-height: 1.7;">
+      <div style="color: rgba(255,255,255,0.5); margin-bottom: 4px; font-weight: 600;">Keeping</div>
+      <div style="color: rgba(255,255,255,0.35);">
+        @layer cascade architecture<br>
+        5-layer ambient structure (adding 1)<br>
+        SVG feTurbulence grain filter<br>
+        Cream text on dark bg<br>
+        Navy for code blocks<br>
+        All motion ≥400ms rule
+      </div>
+    </div>
+    <div style="padding: 14px; background: rgba(200,132,30,0.03); border-radius: 8px; font-size: 11px; line-height: 1.7;">
+      <div style="color: rgba(200,132,30,0.6); margin-bottom: 4px; font-weight: 600;">Evolving</div>
+      <div style="color: rgba(255,255,255,0.35);">
+        Gold: #d4922a → #c8841e (saffron)<br>
+        Base: #141210 → #0e0c0b (darker)<br>
+        +terracotta #6b3a1a mid-tone<br>
+        +indigo #0d1a2a deepest layer<br>
+        +atmospheric haze layer (Swati)<br>
+        Gold glow opacity ↑ (more present)<br>
+        Gradient angles adjusted for depth
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes l2drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(5%,3%) scale(1.04); } }
+  @keyframes l3drift { 0% { transform: translate(0,0) scale(1.01); } 100% { transform: translate(-4%,2%) scale(1); } }
+  @keyframes l4haze { 0% { transform: translate(-3%,-2%) scale(1); } 100% { transform: translate(3%,2%) scale(1.06); } }
+  @keyframes l6breathe { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.07); } }
+</style>

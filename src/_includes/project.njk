@@ -1,0 +1,14 @@
+---
+layout: base.njk
+---
+<article class="project">
+  <header class="project__header">
+    <h1 class="project__title">{{ title }}</h1>
+    {% if descriptor %}
+    <p class="project__descriptor">{{ descriptor }}</p>
+    {% endif %}
+  </header>
+  <div class="project__body prose">
+    {{ content | safe }}
+  </div>
+</article>
