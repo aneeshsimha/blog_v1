@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream:eleventy.config.ts
-import type { UserConfig } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
-export default function (eleventyConfig: UserConfig) {
-=======
 export default function (eleventyConfig) {
->>>>>>> Stashed changes:eleventy.config.js
   eleventyConfig.addPassthroughCopy({ "public": "/" });
   eleventyConfig.addPassthroughCopy("src/css");
 
@@ -19,14 +14,14 @@ export default function (eleventyConfig) {
   });
 
   // Reading time filter
-  eleventyConfig.addFilter("readingTime", (content: string) => {
+  eleventyConfig.addFilter("readingTime", (content) => {
     if (!content) return 1;
     const words = content.replace(/<[^>]*>/g, "").split(/\s+/).length;
     return Math.max(1, Math.ceil(words / 230));
   });
 
   // Date format filter
-  eleventyConfig.addFilter("dateFormat", (date: Date) => {
+  eleventyConfig.addFilter("dateFormat", (date) => {
     return new Date(date).toLocaleDateString("en-US", {
       year: "numeric",
       month: "short",
@@ -35,7 +30,7 @@ export default function (eleventyConfig) {
   });
 
   // RFC 3339 date filter (for datetime attributes and RSS)
-  eleventyConfig.addFilter("dateToRfc3339", (date: Date) => {
+  eleventyConfig.addFilter("dateToRfc3339", (date) => {
     return new Date(date).toISOString();
   });
 

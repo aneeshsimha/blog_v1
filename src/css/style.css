@@ -33,8 +33,8 @@
   :root {
     /* Colors — the gold is a light source, the dark is depth */
     --color-base: #141210;
-    --color-mid: #1c1a17;
-    --color-mid-warm: #1f1d19;
+    --color-mid: #251c15;
+    --color-mid-warm: #2c2016;
     --color-ocean: #0e1520;
     --color-gold: #d4922a;
     --color-earth: #8b4a2a;
@@ -332,6 +332,7 @@
       0 1px 0 rgba(0, 0, 0, 0.3),
       0 0 40px var(--glow-faint);
     letter-spacing: -0.02em;
+    filter: url(#edge-grain);
   }
 
   .hero__tagline {
@@ -447,8 +448,24 @@
     margin: 0 calc(-1 * var(--space-md));
     border-bottom: 1px solid var(--cream-06);
     border-radius: 0.5rem;
+    position: relative;
     transition: box-shadow var(--duration-base) var(--ease-breath),
                 background-color var(--duration-base) var(--ease-breath);
+  }
+
+  .post-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    filter: url(#grain);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-base) var(--ease-breath);
+    border-radius: inherit;
+  }
+
+  .post-card:hover::after {
+    opacity: 0.05;
   }
 
   .post-card:hover {
@@ -609,6 +626,22 @@
     transition: box-shadow var(--duration-slow) var(--ease-breath),
                 transform var(--duration-slow) var(--ease-breath),
                 background-color var(--duration-slow) var(--ease-breath);
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    filter: url(#grain);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--duration-slow) var(--ease-breath);
+    border-radius: inherit;
+    z-index: 10;
+  }
+
+  .project-card:hover::after {
+    opacity: 0.06;
   }
 
   .project-card:hover {
@@ -773,10 +806,10 @@
     inset: 0;
     background: linear-gradient(
       160deg,
-      var(--color-base) 0%,
-      var(--color-mid) 30%,
-      var(--color-ocean) 70%,
-      #0a0e18 100%
+      var(--color-ocean) 0%,
+      var(--color-base) 15%,
+      var(--color-mid) 60%,
+      var(--color-mid-warm) 100%
     );
   }
 
@@ -785,16 +818,16 @@
     position: absolute;
     inset: -50%;
     background: radial-gradient(
-      ellipse at 30% 40%,
-      rgba(14, 21, 32, 0.4) 0%,
-      transparent 70%
+      ellipse at 20% 10%,
+      rgba(14, 21, 32, 0.15) 0%,
+      transparent 50%
     );
-    animation: drift 45s ease-in-out infinite alternate;
+    animation: drift 180s ease-in-out infinite alternate;
   }
 
   @keyframes drift {
     0%   { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(5%, 3%) scale(1.05); }
+    100% { transform: translate(2%, 1%) scale(1.02); }
   }
 
   /* Warm drift — earth undertone, slower cycle */
@@ -802,17 +835,17 @@
     position: absolute;
     inset: -50%;
     background: radial-gradient(
-      ellipse at 70% 60%,
-      rgba(139, 74, 42, 0.12) 0%,
-      rgba(212, 146, 42, 0.04) 30%,
+      ellipse at 70% 80%,
+      rgba(139, 74, 42, 0.2) 0%,
+      rgba(212, 146, 42, 0.06) 40%,
       transparent 70%
     );
-    animation: drift-warm 65s ease-in-out infinite alternate;
+    animation: drift-warm 240s ease-in-out infinite alternate;
   }
 
   @keyframes drift-warm {
-    0%   { transform: translate(0, 0) scale(1.02); }
-    100% { transform: translate(-4%, 2%) scale(1); }
+    0%   { transform: translate(0, 0) scale(1.01); }
+    100% { transform: translate(-2%, 1%) scale(1); }
   }
 
   .ambient__grain {
