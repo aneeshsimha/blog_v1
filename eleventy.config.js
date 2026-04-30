@@ -1,7 +1,11 @@
+<<<<<<< Updated upstream:eleventy.config.ts
 import type { UserConfig } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
 export default function (eleventyConfig: UserConfig) {
+=======
+export default function (eleventyConfig) {
+>>>>>>> Stashed changes:eleventy.config.js
   eleventyConfig.addPassthroughCopy({ "public": "/" });
   eleventyConfig.addPassthroughCopy("src/css");
 
