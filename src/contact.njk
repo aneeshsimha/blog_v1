@@ -1,29 +1,23 @@
 ---
 layout: base.njk
-title: Contact
+title: contact
 permalink: /contact/
 description: "Get in touch"
 ---
-<section class="wrap about">
-  <div class="kicker mono">
-    <span class="seg">Direct line</span>
+<div class="page-head wrap">
+  <div class="eyebrow">
+    <span>field notes · new york</span>
     <span class="bar"></span>
-    <span>{{ site.issue }}</span>
   </div>
+  <h1>contact</h1>
+</div>
 
-  <h1>Contact</h1>
-
-  <div class="bio">
-    <p>I read everything that comes in. I reply selectively — usually within a week, sometimes never. Not personal; it's the only way I keep the signal up.</p>
-
-    <p>Good reasons to email: a project you want to build together, a piece of writing here you have a sharp opinion about, a job or collaboration where the work is <em>specific</em>, a recommendation for something I should read or look at, or — best of all — telling me I'm wrong about something.</p>
-
-    <p>Less good: cold pitches that could've gone to anyone with a contact form.</p>
-  </div>
+<section class="wrap">
+  <p>The inbox is open. Write to me about materials, machines, fashion, energy, deep infrastructure — or the people building them. The best messages read like field notes: specific, curious, a little obsessed.</p>
 
   <div class="links">
-    {% for link in site.links %}
-    <a href="{{ link.url }}"{% if "http" in link.url %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>
-    {% endfor %}
+    {%- for link in site.links -%}
+      <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>
+    {%- endfor -%}
   </div>
 </section>

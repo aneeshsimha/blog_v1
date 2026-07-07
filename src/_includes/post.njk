@@ -1,32 +1,21 @@
 ---
 layout: base.njk
 ---
-{%- set cat = categories[category] or { label: "Signal", color: "cyan", key: "signal" } -%}
-{%- set mkVar = "var(--" + cat.color + ")" -%}
-<article class="wrap article" style="--mk: {{ mkVar }}">
-  <div class="kicker mono">
-    <span class="seg" style="color: {{ mkVar }}">{{ cat.label }}</span>
-    <span class="bar"></span>
-    <span>{{ site.issue }}</span>
-  </div>
-
-  <h1>{{ title }}</h1>
-  {% if standfirst %}<p class="standfirst">{{ standfirst | safe }}</p>{% endif %}
-
-  <div class="ameta">
-    <span>{{ site.author }}</span>
-    <span class="dot">·</span>
+{%- set cat = categories[category] -%}
+<article class="wrap article">
+  <div class="kicker">
+    {%- if cat %}<span>{{ cat.label }}</span><span>·</span>{% endif %}
     <time datetime="{{ page.date | dateToRfc3339 }}">{{ page.date | dateFormat }}</time>
-    <span class="dot">·</span>
-    <span>{{ content | readingTime }} min read</span>
+    <span>·</span>
+    <span>{{ content | readingTime }} min</span>
   </div>
+
+  <h1 class="title">{{ title }}</h1>
+  {% if standfirst %}<p class="standfirst">{{ standfirst | safe }}</p>{% endif %}
 
   <div class="prose">
     {{ content | safe }}
   </div>
 
-  <div class="article-foot">
-    <a href="/writing/">← All signals</a>
-    <span>{{ site.name }} · {{ site.issue }}</span>
-  </div>
+  <a class="backlink" href="/writing/">← writing</a>
 </article>
