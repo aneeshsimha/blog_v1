@@ -1,34 +1,32 @@
 ---
 layout: base.njk
-title: "Signals"
+title: "writing"
 permalink: /writing/
-description: "Signals — short notes, field notes, and dispatches from Aneesh Simha."
+description: "Writing — field notes on systems, taste, and the material future, by Aneesh Simha."
 ---
-<header class="wrap list-head">
-  <div class="kicker mono">
-    <span class="seg">Section · 001</span>
+<div class="page-head wrap">
+  <div class="eyebrow">
+    <span>field notes · new york</span>
     <span class="bar"></span>
-    <span>Notes / Field reports / Dispatches</span>
   </div>
-  <h1>SIGNALS</h1>
-  <p class="standfirst">Notes, dispatches, and field reports on software, taste, ambition, and the <em>material future</em>.</p>
-</header>
+  <h1>writing</h1>
+</div>
 
 <section class="wrap">
-  <div class="list">
-    {% for post in collections.posts %}
-      {%- set cat = categories[post.data.category] or { label: "Signal", color: "cyan" } -%}
-      <article class="row" style="--mk: var(--{{ cat.color }})">
-        <span class="no mono">{{ loop.index | pad2 }}</span>
-        <span class="cat mono">{{ cat.label }}</span>
-        <span class="ttl">
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-          {% if post.data.standfirst %}<span class="sub">{{ post.data.standfirst | safe }}</span>{% endif %}
+  <div class="rows">
+    {%- for post in collections.posts -%}
+      {%- set cat = categories[post.data.category] -%}
+      <a class="row" href="{{ post.url }}">
+        <span class="row-no">{{ loop.index | pad2 }}</span>
+        <span class="row-date">{{ post.date | dateFormat }}</span>
+        <span class="row-main">
+          <span class="row-title">{{ post.data.title }}</span>
+          {%- if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
         </span>
-        <time class="when mono" datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | dateFormat }}</time>
-      </article>
-    {% else %}
-      <p class="row" style="display:block;color:var(--ink-soft);font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase">No signals yet. Check back soon.</p>
-    {% endfor %}
+        <span class="row-cat">{{ cat.label if cat else "" }}</span>
+      </a>
+    {%- else -%}
+      <div class="row"><span class="row-main"><span class="row-title">No signals yet. Check back soon.</span></span></div>
+    {%- endfor -%}
   </div>
 </section>

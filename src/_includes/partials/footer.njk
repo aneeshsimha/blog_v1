@@ -1,10 +1,10 @@
 <footer class="foot wrap">
-  <span>FALSE COLOR · {{ site.issue }}</span>
-  <span>Set in Syne, Newsreader &amp; Space Mono</span>
+  <span>aneesh simha — new york</span>
+  <span>set in fraunces &amp; space mono</span>
   <span>
     {%- for link in site.links -%}
-      <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>{% if not loop.last %} · {% endif %}
+      <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a> ·
     {%- endfor -%}
-    · <a href="/feed.xml">rss</a>
+    <a href="/feed.xml">rss</a>
   </span>
 </footer>

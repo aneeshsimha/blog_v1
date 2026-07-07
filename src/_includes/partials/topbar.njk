@@ -1,14 +1,14 @@
 {%- set current = page.url -%}
 <div class="topbar">
-  <div class="wrap row">
-    <div class="brand"><a href="/">FALSE&nbsp;<b>COLOR</b></a></div>
+  <div class="wrap">
+    <div class="brand"><a href="/">aneesh simha</a></div>
     <nav class="nav" aria-label="Primary">
       {%- for item in site.nav -%}
         {%- set isActive = (item.url == "/" and current == "/") or (item.url != "/" and current.startsWith(item.url)) -%}
         <a href="{{ item.url }}"{% if isActive %} class="active"{% endif %}>{{ item.label }}</a>
       {%- endfor -%}
       <button class="toggle" id="themeBtn" type="button" aria-pressed="false" aria-label="Toggle theme">
-        <span class="swatch" aria-hidden="true"></span><span id="themeLbl">Theme</span>
+        <span class="swatch" aria-hidden="true"></span><span id="themeLbl">dark</span>
       </button>
     </nav>
   </div>
