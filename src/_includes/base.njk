@@ -6,8 +6,7 @@
 <title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}</title>
 <meta name="description" content="{{ description or site.tagline }}">
 <meta name="author" content="{{ site.author }}">
-<meta name="theme-color" content="#f1eee6" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0d0d18" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0d0d18" id="themeColor">
 <meta property="og:title" content="{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}">
 <meta property="og:description" content="{{ description or site.tagline }}">
 <meta property="og:type" content="{{ ogType or 'website' }}">
@@ -21,7 +20,7 @@
 <link rel="stylesheet" href="/css/site.css">
 <script>
 // Inline theme bootstrap — avoid FOUC
-(function(){var s;try{s=localStorage.getItem("theme")}catch(e){}var m=(s==="light"||s==="dark")?s:"dark";document.documentElement.dataset.theme=m;})();
+(function(){var s;try{s=localStorage.getItem("theme")}catch(e){}var m=(s==="light"||s==="dark")?s:"dark";document.documentElement.dataset.theme=m;var mc=document.getElementById("themeColor");if(mc)mc.setAttribute("content",m==="dark"?"#0d0d18":"#f1eee6");})();
 </script>
 </head>
 <body>

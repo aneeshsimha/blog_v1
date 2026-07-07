@@ -36,7 +36,7 @@ layout: base.njk
       {%- set cat = categories[post.data.category] -%}
       <a class="row" href="{{ post.url }}">
         <span class="row-no">{{ loop.index | pad2 }}</span>
-        <span class="row-date" title="{{ post.date | dateFormat }}">{{ post.date | timeAgo }}</span>
+        <span class="row-date" title="{{ post.date | dateFormat }}"><time datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | timeAgo }}</time></span>
         <span class="row-main">
           <span class="row-title">{{ post.data.title }}</span>
           {% if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
@@ -61,7 +61,7 @@ layout: base.njk
       {%- set cat = categories[project.data.category] -%}
       <a class="row" href="{{ project.url }}">
         <span class="row-no">{{ loop.index | pad2 }}</span>
-        <span class="row-date" title="{% if project.data.year %}{{ project.data.year }}{% else %}{{ project.date | dateFormat }}{% endif %}">{{ project.date | timeAgo }}</span>
+        <span class="row-date" title="{% if project.data.year %}{{ project.data.year }}{% else %}{{ project.date | dateFormat }}{% endif %}"><time datetime="{{ project.date | dateToRfc3339 }}">{{ project.date | timeAgo }}</time></span>
         <span class="row-main">
           <span class="row-title">{{ project.data.title }}</span>
           {% if project.data.standfirst %}<span class="row-sub">{{ project.data.standfirst }}</span>{% endif %}

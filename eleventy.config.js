@@ -4,7 +4,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public": "/" });
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
-  eleventyConfig.addPassthroughCopy("src/images");
 
   // Font passthrough — Fraunces (serif/display), Space Mono (mono)
   eleventyConfig.addPassthroughCopy({
@@ -28,6 +27,7 @@ export default function (eleventyConfig) {
       year: "numeric",
       month: "short",
       day: "numeric",
+      timeZone: "UTC",
     });
   });
 
@@ -37,13 +37,20 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("pad2", (n) => String(n).padStart(2, "0"));
 
-  // Relative date for the home page — single unit, floored: 2d, 3w, 2mo, 1y
+  // Relative date for the home page — single unit, floored: today, 2d, 3w, 2mo, 1y
   eleventyConfig.addFilter("timeAgo", (date) => {
-    const days = Math.floor((Date.now() - new Date(date).getTime()) / 86400000);
+    const now = new Date();
+    const then = new Date(date);
+    const days = Math.floor(
+      (Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()) -
+        Date.UTC(then.getUTCFullYear(), then.getUTCMonth(), then.getUTCDate())) /
+        86400000
+    );
+    if (days < 1) return "today";
     if (days >= 365) return `${Math.floor(days / 365)}y`;
     if (days >= 30) return `${Math.floor(days / 30)}mo`;
     if (days >= 7) return `${Math.floor(days / 7)}w`;
-    return `${Math.max(0, days)}d`;
+    return `${days}d`;
   });
 
   eleventyConfig.addCollection("posts", (collectionApi) => {

@@ -19,6 +19,8 @@
     var lbl = document.getElementById("themeLbl");
     if (lbl) lbl.textContent = mode === "dark" ? "dark" : "light";
     if (btn) btn.setAttribute("aria-pressed", mode === "dark" ? "true" : "false");
+    var meta = document.getElementById("themeColor");
+    if (meta) meta.setAttribute("content", mode === "dark" ? "#0d0d18" : "#f1eee6");
   }
 
   // Set immediately to avoid flash
