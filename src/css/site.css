@@ -226,6 +226,45 @@ main > .eyebrow{margin-top:64px}
 }
 .intro em{font-style:italic;color:var(--indigo)}
 
+/* ── Fun pass: more / currently / clock ─────── */
+.clock:empty{display:none}
+.more{
+  margin-top:30px;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.more summary{
+  list-style:none;cursor:pointer;
+  padding:16px 0;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
+  color:var(--ink-soft);
+  transition:color .3s var(--ease);
+}
+.more summary::-webkit-details-marker{display:none}
+.more summary::marker{content:""}
+.more summary:hover{color:var(--indigo)}
+.more-mark-open{display:none}
+.more[open] .more-mark-open{display:inline}
+.more[open] .more-mark-closed{display:none}
+.more-body{
+  font-family:var(--serif);font-weight:300;
+  font-size:19px;line-height:1.7;
+  padding:2px 0 4px;
+}
+.more-link{
+  display:inline-block;
+  margin:12px 0 20px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
+  color:var(--ink-soft);text-decoration:none;
+  transition:color .3s var(--ease);
+}
+.more-link:hover{color:var(--indigo)}
+.currently{
+  margin-top:20px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  color:var(--ink-soft);
+}
+
 /* ── Home sections ──────────────────────────── */
 .section{margin-top:68px}
 .section-head{

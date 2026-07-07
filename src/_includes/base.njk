@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="/css/site.css">
 <script>
 // Inline theme bootstrap — avoid FOUC
-(function(){var s;try{s=localStorage.getItem("theme")}catch(e){}var h=new Date().getHours();var m=(s==="light"||s==="dark")?s:((h>=6&&h<18)?"light":"dark");document.documentElement.dataset.theme=m;})();
+(function(){var s;try{s=localStorage.getItem("theme")}catch(e){}var m=(s==="light"||s==="dark")?s:"dark";document.documentElement.dataset.theme=m;})();
 </script>
 </head>
 <body>
@@ -33,5 +33,6 @@
   {% include "partials/footer.njk" %}
   <script src="/js/theme.js" defer></script>
   <script src="/js/heat.js" defer></script>
+  <script src="/js/fun.js" defer></script>
 </body>
 </html>

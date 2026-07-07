@@ -1,21 +1,16 @@
 // NIGHT STUDY — theme switcher
-// Resolution order: explicit user choice (localStorage) → time-of-day → system pref.
+// Resolution order: explicit user choice (localStorage) → dark (the default).
 // Run inline (head) to avoid FOUC.
 (function () {
   var STORAGE = "theme";
   var html = document.documentElement;
-
-  function timeOfDay() {
-    var h = new Date().getHours();
-    return (h >= 6 && h < 18) ? "light" : "dark";
-  }
 
   function resolve() {
     try {
       var saved = localStorage.getItem(STORAGE);
       if (saved === "light" || saved === "dark") return saved;
     } catch (e) {}
-    return timeOfDay();
+    return "dark";
   }
 
   function apply(mode) {

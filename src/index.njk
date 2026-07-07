@@ -8,13 +8,21 @@ layout: base.njk
 <h1 class="sr-only">{{ site.name }} — {{ site.tagline }}</h1>
 
 <div class="eyebrow wrap">
-  <span>field notes · new york</span>
+  <span>field notes · new york<span class="clock"></span></span>
   <span class="bar"></span>
 </div>
 
 <p class="intro wrap">
   I'm Aneesh — an engineer in New York studying <em>how the world gets made</em>. Materials, software, supply chains, fabric, capital: the same hidden system wearing different jackets. This is the field notebook — part strategy memo, part design archive, <em>written mostly at night</em>.<span class="cursor">▍</span>
 </p>
+
+<details class="more wrap">
+  <summary>more about this notebook <span class="more-mark-closed">↓</span><span class="more-mark-open">✕</span></summary>
+  <p class="more-body">Systems, aesthetics, frontier technology, self-invention. I write from inside the transformation, not after it — code that leads to capital, materials that lead to fashion, taste as a kind of philosophy.</p>
+  <a class="more-link" href="/about/">→ the full manifesto</a>
+</details>
+
+<p class="currently wrap">currently: five tabs on nuclear startups, one on a japanese fabric mill</p>
 
 <section class="section wrap">
   <div class="section-head">
@@ -28,7 +36,7 @@ layout: base.njk
       {%- set cat = categories[post.data.category] -%}
       <a class="row" href="{{ post.url }}">
         <span class="row-no">{{ loop.index | pad2 }}</span>
-        <span class="row-date">{{ post.date | dateFormat }}</span>
+        <span class="row-date" title="{{ post.date | dateFormat }}">{{ post.date | timeAgo }}</span>
         <span class="row-main">
           <span class="row-title">{{ post.data.title }}</span>
           {% if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
@@ -53,7 +61,7 @@ layout: base.njk
       {%- set cat = categories[project.data.category] -%}
       <a class="row" href="{{ project.url }}">
         <span class="row-no">{{ loop.index | pad2 }}</span>
-        <span class="row-date">{% if project.data.year %}{{ project.data.year }}{% else %}{{ project.date | dateFormat }}{% endif %}</span>
+        <span class="row-date" title="{% if project.data.year %}{{ project.data.year }}{% else %}{{ project.date | dateFormat }}{% endif %}">{{ project.date | timeAgo }}</span>
         <span class="row-main">
           <span class="row-title">{{ project.data.title }}</span>
           {% if project.data.standfirst %}<span class="row-sub">{{ project.data.standfirst }}</span>{% endif %}
