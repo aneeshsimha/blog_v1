@@ -3,11 +3,14 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "npx @11ty/eleventy --serve --config=eleventy.config.ts",
-    "build": "npx @11ty/eleventy --config=eleventy.config.ts"
+    "dev": "npx @11ty/eleventy --serve --config=eleventy.config.js",
+    "build": "npx @11ty/eleventy --config=eleventy.config.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-rss": "^3.0.0",
+    "@fontsource/fraunces": "^5.2.9",
+    "@fontsource/space-mono": "^5.2.9",
     "typescript": "^5.7.0"
   }
 }

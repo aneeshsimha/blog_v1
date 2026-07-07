@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: about
+permalink: /about/
+description: "About Aneesh Simha"
+---
+<div class="page-head wrap">
+  <div class="eyebrow">
+    <span>field notes · new york</span>
+    <span class="bar"></span>
+  </div>
+  <h1>about</h1>
+</div>
+
+<section class="wrap">
+  <p class="standfirst">A field notebook, kept in formation.</p>
+
+  <div class="manifesto">
+    <p>I think in systems, and I care how things look. For a long time I treated those as two separate facts about myself — the engineer and the aesthete, the data pipeline and the jacket hanging on the chair. This site is what happened when I stopped separating them.</p>
+
+    <p>My background has a strange but coherent shape: materials science, then computer science, then data engineering, then startups. On paper it reads as drift. In practice it is one obsession applied at different scales — <em>how the world gets made</em>. A battery, a fabric, a healthcare data pipeline, and an apparel brand are the same kind of object to me: a hidden system that becomes visible through what it produces. Supply chains are syntax. Materials are vocabulary. Taste is compression.</p>
+
+    <p>I'm not a loud networker and I'm not a natural salesman. My strength is investigation. I like going into the basement of a problem — the mill that weaves the fabric, the schema under the dashboard, the incentive under the pitch — and coming back with the thing everyone missed. Memos, maps, databases, frameworks: tools that turn chaos into something legible. There is a strategist in me, but not the corporate kind. Closer to <em>a taste-driven analyst of emerging worlds</em>.</p>
+
+    <p>Aesthetically, my world is late-night research. Dark indigo walls, terminal glow, five tabs open on nuclear startups, one on a cropped striped shirt, one on an obscure Japanese fabric mill. I'm drawn to the overlap of elegance and machinery: performance fabrics, clean silhouettes, industrial objects, deep infrastructure, rooms with shadow and intent. Things that are <em>engineered and beautiful at the same time</em>, where neither quality apologizes for the other.</p>
+
+    <p>There is an honest current under all of this. I'm trying to become more powerful in my own life — not in the cartoon dominance sense, but in the sense of agency: body, career, taste, money, discipline, identity. I can feel when life is happening around me and I'm not fully inside it yet. That tension is the charge in this work. I would rather write from inside the transformation than pretend it is finished.</p>
+
+    <p>So this is a field notebook, kept in public. Part strategy memo, part design archive, part personal operating system, part <em>nocturnal magazine for the future I'm trying to earn</em>. The through-line is systems, aesthetics, frontier technology, and self-invention — the project of building a life where intelligence and taste are not separate. Where code can lead to capital, materials can lead to fashion, and personal style can become a kind of philosophy.</p>
+
+    <p>If any of that sounds like your basement too, the inbox is open.</p>
+  </div>
+
+  <div class="links">
+    {%- for link in site.links -%}
+      <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>
+    {%- endfor -%}
+  </div>
+</section>

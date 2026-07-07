@@ -1,6 +1,32 @@
 ---
 layout: base.njk
-title: writing
+title: "writing"
+permalink: /writing/
+description: "Writing — field notes on systems, taste, and the material future, by Aneesh Simha."
 ---
-<h1>writing</h1>
-<p>nothing here yet.</p>
+<div class="page-head wrap">
+  <div class="eyebrow">
+    <span>field notes · new york</span>
+    <span class="bar"></span>
+  </div>
+  <h1>writing</h1>
+</div>
+
+<section class="wrap">
+  <div class="rows">
+    {%- for post in collections.posts -%}
+      {%- set cat = categories[post.data.category] -%}
+      <a class="row" href="{{ post.url }}">
+        <span class="row-no">{{ loop.index | pad2 }}</span>
+        <span class="row-date"><time datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | dateFormat }}</time></span>
+        <span class="row-main">
+          <span class="row-title">{{ post.data.title }}</span>
+          {% if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
+        </span>
+        <span class="row-cat">{{ cat.label if cat else "" }}</span>
+      </a>
+    {%- else -%}
+      <div class="row"><span class="row-main"><span class="row-title">No signals yet. Check back soon.</span></span></div>
+    {%- endfor -%}
+  </div>
+</section>

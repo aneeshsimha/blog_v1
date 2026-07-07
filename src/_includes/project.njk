@@ -1,0 +1,29 @@
+---
+layout: base.njk
+---
+{%- set cat = categories[category] -%}
+<article class="wrap article">
+  <div class="kicker">
+    <span>project</span>
+    {%- if cat %}<span>·</span><span>{{ cat.label }}</span>{% endif %}
+    <span>·</span>
+    {% if year %}<span>{{ year }}</span>{% else %}<time datetime="{{ page.date | dateToRfc3339 }}">{{ page.date | dateFormat }}</time>{% endif %}
+  </div>
+
+  <h1 class="title">{{ title }}</h1>
+  {% if standfirst %}<p class="standfirst">{{ standfirst | safe }}</p>{% endif %}
+
+  {% if role or link %}
+  <div class="meta">
+    {% if role %}<span>{{ role }}</span>{% endif %}
+    {% if role and link %}<span>·</span>{% endif %}
+    {% if link %}<a href="{{ link }}" rel="noopener" target="_blank">visit ↗</a>{% endif %}
+  </div>
+  {% endif %}
+
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+
+  <a class="backlink" href="/projects/">← projects</a>
+</article>

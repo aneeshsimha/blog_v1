@@ -1,0 +1,8 @@
+{
+  "signal":    { "label": "signal" },
+  "specimen":  { "label": "specimen" },
+  "interface": { "label": "interface" },
+  "material":  { "label": "material" },
+  "capital":   { "label": "capital" },
+  "field":     { "label": "field note" }
+}

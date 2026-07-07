@@ -1,0 +1,21 @@
+---
+layout: base.njk
+---
+{%- set cat = categories[category] -%}
+<article class="wrap article">
+  <div class="kicker">
+    {%- if cat %}<span>{{ cat.label }}</span><span>·</span>{% endif %}
+    <time datetime="{{ page.date | dateToRfc3339 }}">{{ page.date | dateFormat }}</time>
+    <span>·</span>
+    <span>{{ content | readingTime }} min</span>
+  </div>
+
+  <h1 class="title">{{ title }}</h1>
+  {% if standfirst %}<p class="standfirst">{{ standfirst | safe }}</p>{% endif %}
+
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+
+  <a class="backlink" href="/writing/">← writing</a>
+</article>

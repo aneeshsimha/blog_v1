@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: contact
+permalink: /contact/
+description: "Get in touch"
+---
+<div class="page-head wrap">
+  <div class="eyebrow">
+    <span>field notes · new york</span>
+    <span class="bar"></span>
+  </div>
+  <h1>contact</h1>
+</div>
+
+<section class="wrap">
+  <p>The inbox is open. Write to me about materials, machines, fashion, energy, deep infrastructure — or the people building them. The best messages read like field notes: specific, curious, a little obsessed.</p>
+
+  <div class="links">
+    {%- for link in site.links -%}
+      <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>
+    {%- endfor -%}
+  </div>
+</section>

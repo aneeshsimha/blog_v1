@@ -1,23 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title | default(site.name) }}</title>
-  <link rel="stylesheet" href="/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{{ description or site.tagline }}">
+<meta name="author" content="{{ site.author }}">
+<meta name="theme-color" content="#0d0d18" id="themeColor">
+<meta property="og:title" content="{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}">
+<meta property="og:description" content="{{ description or site.tagline }}">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><circle cx=%2216%22 cy=%2216%22 r=%2210%22 fill=%22%234B3F8F%22/></svg>">
+<link rel="preload" href="/fonts/fraunces-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/space-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<script>
+// Inline theme bootstrap — avoid FOUC
+(function(){var s;try{s=localStorage.getItem("theme")}catch(e){}var m=(s==="light"||s==="dark")?s:"dark";document.documentElement.dataset.theme=m;var mc=document.getElementById("themeColor");if(mc)mc.setAttribute("content",m==="dark"?"#0d0d18":"#f1eee6");})();
+</script>
 </head>
 <body>
-  <nav>
-    <a href="/">{{ site.name }}</a>
-    <a href="/writing/">writing</a>
-    <a href="/projects/">projects</a>
-    <a href="/now/">now</a>
-  </nav>
-  <main>
+  <a class="sr-only" href="#main">Skip to content</a>
+  {% include "partials/topbar.njk" %}
+  <main id="main">
     {{ content | safe }}
   </main>
-  <footer>
-    <small>est. 2026</small>
-  </footer>
+  {% include "partials/footer.njk" %}
+  <script src="/js/theme.js" defer></script>
+  <script src="/js/heat.js" defer></script>
+  <script src="/js/fun.js" defer></script>
 </body>
 </html>

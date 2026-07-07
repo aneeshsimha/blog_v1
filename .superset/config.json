@@ -1,0 +1,7 @@
+{
+  "setup": [
+    "npm run dev"
+  ],
+  "teardown": [],
+  "run": []
+}

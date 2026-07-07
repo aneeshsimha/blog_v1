@@ -1,10 +1,75 @@
 ---
 layout: base.njk
 ---
-<h1>{{ site.name }}</h1>
-<p>{{ site.bio }}</p>
-<p>
-  {%- for link in site.links %}
-  <a href="{{ link.url }}">{{ link.label }}</a>{% if not loop.last %} /{% endif %}
-  {%- endfor %}
+
+{%- set posts = collections.posts or [] -%}
+{%- set projects = collections.projects or [] -%}
+
+<h1 class="sr-only">{{ site.name }} — {{ site.tagline }}</h1>
+
+<div class="eyebrow wrap">
+  <span>field notes · new york<span class="clock"></span></span>
+  <span class="bar"></span>
+</div>
+
+<p class="intro wrap">
+  I'm Aneesh — an engineer in New York studying <em>how the world gets made</em>. Materials, software, supply chains, fabric, capital: the same hidden system wearing different jackets. This is the field notebook — part strategy memo, part design archive, <em>written mostly at night</em>.<span class="cursor">▍</span>
 </p>
+
+<details class="more wrap">
+  <summary>more about this notebook <span class="more-mark-closed">↓</span><span class="more-mark-open">✕</span></summary>
+  <p class="more-body">Systems, aesthetics, frontier technology, self-invention. I write from inside the transformation, not after it — code that leads to capital, materials that lead to fashion, taste as a kind of philosophy.</p>
+  <a class="more-link" href="/about/">→ the full manifesto</a>
+</details>
+
+<p class="currently wrap">currently: five tabs on nuclear startups, one on a japanese fabric mill</p>
+
+<section class="section wrap">
+  <div class="section-head">
+    <span>writing</span>
+    <span class="bar"></span>
+    <a href="/writing/">all →</a>
+  </div>
+  <div class="rows">
+    {%- for post in posts -%}
+      {%- if loop.index <= 5 -%}
+      {%- set cat = categories[post.data.category] -%}
+      <a class="row" href="{{ post.url }}">
+        <span class="row-no">{{ loop.index | pad2 }}</span>
+        <span class="row-date" title="{{ post.date | dateFormat }}"><time datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | timeAgo }}</time></span>
+        <span class="row-main">
+          <span class="row-title">{{ post.data.title }}</span>
+          {% if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
+        </span>
+        <span class="row-cat">{{ cat.label if cat else "" }}</span>
+      </a>
+      {%- endif -%}
+    {%- else -%}
+      <div class="row"><span class="row-main"><span class="row-title">Nothing filed yet.</span></span></div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head">
+    <span>projects</span>
+    <span class="bar"></span>
+    <a href="/projects/">all →</a>
+  </div>
+  <div class="rows">
+    {%- for project in projects -%}
+      {%- set cat = categories[project.data.category] -%}
+      <a class="row" href="{{ project.url }}">
+        <span class="row-no">{{ loop.index | pad2 }}</span>
+        <span class="row-date" title="{% if project.data.year %}{{ project.data.year }}{% else %}{{ project.date | dateFormat }}{% endif %}"><time datetime="{{ project.date | dateToRfc3339 }}">{{ project.date | timeAgo }}</time></span>
+        <span class="row-main">
+          <span class="row-title">{{ project.data.title }}</span>
+          {% if project.data.standfirst %}<span class="row-sub">{{ project.data.standfirst }}</span>{% endif %}
+        </span>
+        <span class="row-cat">{{ cat.label if cat else "" }}</span>
+      </a>
+    {%- else -%}
+      <div class="row"><span class="row-main"><span class="row-title">Nothing filed yet.</span></span></div>
+    {%- endfor -%}
+  </div>
+</section>
