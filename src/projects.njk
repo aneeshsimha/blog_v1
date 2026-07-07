@@ -21,7 +21,7 @@ description: "Projects, prototypes, and experiments by Aneesh Simha."
         <span class="row-date">{% if project.data.year %}{{ project.data.year }}{% else %}{{ project.date | dateFormat }}{% endif %}</span>
         <span class="row-main">
           <span class="row-title">{{ project.data.title }}</span>
-          {%- if project.data.standfirst %}<span class="row-sub">{{ project.data.standfirst }}</span>{% endif %}
+          {% if project.data.standfirst %}<span class="row-sub">{{ project.data.standfirst }}</span>{% endif %}
         </span>
         <span class="row-cat">{{ cat.label if cat else "" }}</span>
       </a>

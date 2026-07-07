@@ -3,7 +3,7 @@
   <span>set in fraunces &amp; space mono</span>
   <span>
     {%- for link in site.links -%}
-      <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a> ·
+      <a href="{{ link.url }}"{% if link.url.startsWith("http") %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>{{ " · " }}
     {%- endfor -%}
     <a href="/feed.xml">rss</a>
   </span>

@@ -21,7 +21,7 @@ description: "Writing — field notes on systems, taste, and the material future
         <span class="row-date">{{ post.date | dateFormat }}</span>
         <span class="row-main">
           <span class="row-title">{{ post.data.title }}</span>
-          {%- if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
+          {% if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
         </span>
         <span class="row-cat">{{ cat.label if cat else "" }}</span>
       </a>

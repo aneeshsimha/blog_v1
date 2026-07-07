@@ -32,7 +32,7 @@ layout: base.njk
         <span class="row-date">{{ post.date | dateFormat }}</span>
         <span class="row-main">
           <span class="row-title">{{ post.data.title }}</span>
-          {%- if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
+          {% if post.data.standfirst %}<span class="row-sub">{{ post.data.standfirst }}</span>{% endif %}
         </span>
         <span class="row-cat">{{ cat.label if cat else "" }}</span>
       </a>
@@ -57,7 +57,7 @@ layout: base.njk
         <span class="row-date">{% if project.data.year %}{{ project.data.year }}{% else %}{{ project.date | dateFormat }}{% endif %}</span>
         <span class="row-main">
           <span class="row-title">{{ project.data.title }}</span>
-          {%- if project.data.standfirst %}<span class="row-sub">{{ project.data.standfirst }}</span>{% endif %}
+          {% if project.data.standfirst %}<span class="row-sub">{{ project.data.standfirst }}</span>{% endif %}
         </span>
         <span class="row-cat">{{ cat.label if cat else "" }}</span>
       </a>
