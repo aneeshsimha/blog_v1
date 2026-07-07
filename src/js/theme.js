@@ -1,8 +1,8 @@
-// FALSE COLOR — theme switcher
+// NIGHT STUDY — theme switcher
 // Resolution order: explicit user choice (localStorage) → time-of-day → system pref.
 // Run inline (head) to avoid FOUC.
 (function () {
-  var STORAGE = "fc-theme";
+  var STORAGE = "theme";
   var html = document.documentElement;
 
   function timeOfDay() {
@@ -22,7 +22,7 @@
     html.dataset.theme = mode;
     var btn = document.getElementById("themeBtn");
     var lbl = document.getElementById("themeLbl");
-    if (lbl) lbl.textContent = mode === "dark" ? "Dark" : "Light";
+    if (lbl) lbl.textContent = mode === "dark" ? "dark" : "light";
     if (btn) btn.setAttribute("aria-pressed", mode === "dark" ? "true" : "false");
   }
 
@@ -34,7 +34,7 @@
     var btn = document.getElementById("themeBtn");
     if (!btn) return;
     var lbl = document.getElementById("themeLbl");
-    if (lbl) lbl.textContent = (html.dataset.theme === "dark") ? "Dark" : "Light";
+    if (lbl) lbl.textContent = (html.dataset.theme === "dark") ? "dark" : "light";
     btn.addEventListener("click", function () {
       var next = html.dataset.theme === "dark" ? "light" : "dark";
       try { localStorage.setItem(STORAGE, next); } catch (e) {}

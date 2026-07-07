@@ -1,5 +1,5 @@
-// FALSE COLOR — subtle cursor heat bloom (fingerprints on the page)
-// Hidden on reduce-motion and touch.
+// NIGHT STUDY — cursor bloom (indigo lamp-glow following the pointer)
+// Color/blend live in CSS (.heat-bloom uses --glow). Hidden on reduce-motion and touch.
 (function () {
   if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   if (matchMedia("(hover: none)").matches) return;

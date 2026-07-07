@@ -6,14 +6,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/images");
 
-  // Font passthrough — Syne (display), Newsreader (serif), Space Mono (mono)
+  // Font passthrough — Fraunces (serif/display), Space Mono (mono)
   eleventyConfig.addPassthroughCopy({
-    "node_modules/@fontsource/syne/files/syne-latin-600-normal.woff2": "fonts/syne-latin-600-normal.woff2",
-    "node_modules/@fontsource/syne/files/syne-latin-700-normal.woff2": "fonts/syne-latin-700-normal.woff2",
-    "node_modules/@fontsource/syne/files/syne-latin-800-normal.woff2": "fonts/syne-latin-800-normal.woff2",
-    "node_modules/@fontsource/newsreader/files/newsreader-latin-300-normal.woff2": "fonts/newsreader-latin-300-normal.woff2",
-    "node_modules/@fontsource/newsreader/files/newsreader-latin-400-normal.woff2": "fonts/newsreader-latin-400-normal.woff2",
-    "node_modules/@fontsource/newsreader/files/newsreader-latin-400-italic.woff2": "fonts/newsreader-latin-400-italic.woff2",
+    "node_modules/@fontsource/fraunces/files/fraunces-latin-300-normal.woff2": "fonts/fraunces-latin-300-normal.woff2",
+    "node_modules/@fontsource/fraunces/files/fraunces-latin-400-normal.woff2": "fonts/fraunces-latin-400-normal.woff2",
+    "node_modules/@fontsource/fraunces/files/fraunces-latin-600-normal.woff2": "fonts/fraunces-latin-600-normal.woff2",
+    "node_modules/@fontsource/fraunces/files/fraunces-latin-300-italic.woff2": "fonts/fraunces-latin-300-italic.woff2",
+    "node_modules/@fontsource/fraunces/files/fraunces-latin-400-italic.woff2": "fonts/fraunces-latin-400-italic.woff2",
     "node_modules/@fontsource/space-mono/files/space-mono-latin-400-normal.woff2": "fonts/space-mono-latin-400-normal.woff2",
     "node_modules/@fontsource/space-mono/files/space-mono-latin-700-normal.woff2": "fonts/space-mono-latin-700-normal.woff2",
   });
@@ -54,8 +53,8 @@ export default function (eleventyConfig) {
     collection: { name: "posts", limit: 20 },
     metadata: {
       language: "en",
-      title: "FALSE COLOR",
-      subtitle: "A personal magazine by Aneesh Simha — software, taste, ambition, and the material future.",
+      title: "Aneesh Simha",
+      subtitle: "Field notes on systems, taste, and the material future.",
       base: "https://aneesh.world/",
       author: { name: "Aneesh Simha" },
     },

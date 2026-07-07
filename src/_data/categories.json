@@ -1,8 +1,8 @@
 {
-  "signal":    { "label": "Signal",     "color": "cyan",     "key": "signal" },
-  "specimen":  { "label": "Specimen",   "color": "violet",   "key": "specimen" },
-  "interface": { "label": "Interface",  "color": "cyan",     "key": "interface" },
-  "material":  { "label": "Material",   "color": "infrared", "key": "material" },
-  "capital":   { "label": "Capital",    "color": "amber",    "key": "capital" },
-  "field":     { "label": "Field note", "color": "magenta",  "key": "field" }
+  "signal":    { "label": "signal" },
+  "specimen":  { "label": "specimen" },
+  "interface": { "label": "interface" },
+  "material":  { "label": "material" },
+  "capital":   { "label": "capital" },
+  "field":     { "label": "field note" }
 }
