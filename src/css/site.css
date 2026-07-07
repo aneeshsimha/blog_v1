@@ -216,8 +216,9 @@ body::after{
 .bar{flex:1;height:1px;background:var(--line);min-width:24px}
 
 /* ── Home intro ─────────────────────────────── */
+main > .eyebrow{margin-top:64px}
 .intro{
-  margin:60px 0 8px;
+  margin:28px auto 8px;
   font-family:var(--serif);font-weight:300;
   font-size:clamp(24px, 3.4vw, 28px);
   line-height:1.58;
@@ -299,7 +300,7 @@ body::after{
 .article{padding:64px 0 8px}
 .kicker{
   display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:lowercase;
   color:var(--ink-soft);
   margin-bottom:30px;
 }
@@ -369,10 +370,10 @@ body::after{
 .manifesto em{font-style:italic;color:var(--indigo)}
 .manifesto > p:first-of-type::first-letter{
   float:left;
-  font-family:var(--serif);font-weight:300;
-  font-size:3.4em;line-height:.78;
+  font-family:var(--serif);font-weight:400;
+  font-size:3.6em;line-height:.74;
   color:var(--indigo);
-  padding:.08em .14em 0 0;
+  padding:.1em .14em 0 0;
 }
 
 /* ── Link list (about / contact) ────────────── */
@@ -426,7 +427,8 @@ body::after{
   .wrap{padding:0 20px}
   .foot{padding-left:20px;padding-right:20px;flex-direction:column;gap:8px}
   .nav{gap:14px}
-  .intro{margin-top:44px}
+  main > .eyebrow{margin-top:44px}
+  .intro{margin-top:22px}
   .article,.page-head{padding-top:48px}
 }
 
