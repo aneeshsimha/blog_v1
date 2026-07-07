@@ -1,26 +1,36 @@
 ---
 layout: base.njk
-title: Work
-permalink: /work/
-description: "Selected work by Aneesh Simha."
+title: Projects
+permalink: /projects/
+description: "Projects, prototypes, and experiments by Aneesh Simha"
 ---
-<section class="work-list">
-  <h1>Work</h1>
-  <div class="work-grid">
-    {% for project in collections.projects %}
-    <a href="{{ project.url }}" class="project-card">
-      {% if project.data.thumbnail %}
-      <div class="project-card__thumb-wrap">
-        <img class="project-card__thumb" src="{{ project.data.thumbnail }}" alt="" loading="lazy">
-      </div>
-      {% endif %}
-      <div class="project-card__body">
-        <h2 class="project-card__title">{{ project.data.title }}</h2>
-        <p class="project-card__descriptor">{{ project.data.descriptor }}</p>
-      </div>
+<section class="wrap list-head">
+  <div class="kicker mono">
+    <span class="seg">Index · Projects</span>
+    <span class="bar"></span>
+    <span>{{ site.issue }}</span>
+  </div>
+  <h1>PROJECTS</h1>
+  <p class="standfirst">Builds, experiments, and prototypes.</p>
+</section>
+
+<section class="wrap">
+  <div class="list">
+    {% for project in collections.projects | reverse %}
+    {%- set cat = categories[project.data.category] or { label: "Interface", color: "cyan" } -%}
+    <a class="row" href="{{ project.url }}" style="--mk: var(--{{ cat.color }})">
+      <span class="no">{{ loop.index | pad2 }}</span>
+      <span class="cat">{{ cat.label }}</span>
+      <span class="ttl">
+        {{ project.data.title }}
+        {% if project.data.standfirst %}<span class="sub">{{ project.data.standfirst }}</span>{% endif %}
+      </span>
+      <span class="when">
+        {% if project.data.year %}{{ project.data.year }}{% else %}<time datetime="{{ project.date | dateToRfc3339 }}">{{ project.date | dateFormat }}</time>{% endif %}
+      </span>
     </a>
     {% else %}
-    <p>Nothing here yet.</p>
+    <div class="row"><span class="ttl">No projects yet. <span class="sub">Drafts are louder than they look.</span></span></div>
     {% endfor %}
   </div>
 </section>

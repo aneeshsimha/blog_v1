@@ -1,22 +1,33 @@
 ---
 layout: base.njk
 title: About
-description: "About Aneesh Simha — software, systems, and language."
+permalink: /about/
+description: "About Aneesh Simha"
 ---
-<article class="about">
-  <div class="about__photo">
-    {# Environmental photo — add later #}
+<section class="wrap about">
+  <div class="kicker mono">
+    <span class="seg">Editor's note · {{ site.issue }}</span>
+    <span class="bar"></span>
+    <span>Aneesh Simha</span>
   </div>
-  <div class="about__content">
-    <h1>About</h1>
-    <p>There's a texture to the space between human thought and machine execution. I spend most of my time there, shaping the systems that process and understand language.</p>
-    <p>I care deeply about how things break. A good system doesn't just work—it fails with grace, leaving breadcrumbs in the dark. I build with an eye toward that quiet resilience.</p>
-    <p>Whether it's a compiler pipeline or a piece of prose, I'm drawn to precision and the quiet hum of something built with care.</p>
-    <ul class="about__interests">
-      <li>distributed systems</li>
-      <li>compilers</li>
-      <li>NLP</li>
-      <li>type theory</li>
-    </ul>
+
+  <h1>About</h1>
+
+  <div class="bio">
+    <p>I'm Aneesh — a software engineer who writes about software, taste, and ambition. I grew up moving between things, and I built a career on the same instinct: shipping systems that are precise underneath and quiet on the surface.</p>
+
+    <p>Most of my time goes to AI engineering. Retrieval, evals, the unglamorous plumbing that decides whether a model feels useful or feels like a parlor trick. I care about <em>what makes a system trustworthy</em> — not the demo, the third week of production.</p>
+
+    <p>Outside the terminal, I'm watching a few things closely: materials and fashion-tech (the part of the future you can touch), deep tech and the capital flowing into atoms, and New York as the operating system I happen to run on. The throughline is the same one I look for in software — specificity, restraint, and a point of view.</p>
+
+    <p>FALSE COLOR is a personal magazine. I made it because the usual portfolio template flattens the things I actually think about, and because I'd rather think out loud than rehearse. Issues come out when they're ready. Drafts stay drafts longer than they should.</p>
+
+    <p>If any of that lands — or you think I'm wrong about something — <em>say so</em>. I read everything.</p>
   </div>
-</article>
+
+  <div class="links">
+    {% for link in site.links %}
+    <a href="{{ link.url }}"{% if "http" in link.url %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>
+    {% endfor %}
+  </div>
+</section>

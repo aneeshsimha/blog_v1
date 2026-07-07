@@ -1,14 +1,30 @@
 ---
 layout: base.njk
 ---
-<article class="project">
-  <header class="project__header">
-    <h1 class="project__title">{{ title }}</h1>
-    {% if descriptor %}
-    <p class="project__descriptor">{{ descriptor }}</p>
-    {% endif %}
-  </header>
-  <div class="project__body prose">
+{%- set cat = categories[category] or { label: "Interface", color: "cyan", key: "interface" } -%}
+{%- set mkVar = "var(--" + cat.color + ")" -%}
+<article class="wrap article" style="--mk: {{ mkVar }}">
+  <div class="kicker mono">
+    <span class="seg" style="color: {{ mkVar }}">Project · {{ cat.label }}</span>
+    <span class="bar"></span>
+    <span>{{ site.issue }}</span>
+  </div>
+
+  <h1>{{ title }}</h1>
+  {% if standfirst %}<p class="standfirst">{{ standfirst | safe }}</p>{% endif %}
+
+  <div class="ameta">
+    {% if role %}<span>{{ role }}</span><span class="dot">·</span>{% endif %}
+    {% if year %}<span>{{ year }}</span>{% else %}<time datetime="{{ page.date | dateToRfc3339 }}">{{ page.date | dateFormat }}</time>{% endif %}
+    {% if link %}<span class="dot">·</span><a href="{{ link }}" rel="noopener" target="_blank">Visit ↗</a>{% endif %}
+  </div>
+
+  <div class="prose">
     {{ content | safe }}
+  </div>
+
+  <div class="article-foot">
+    <a href="/projects/">← All projects</a>
+    <span>{{ site.name }} · {{ site.issue }}</span>
   </div>
 </article>

@@ -1,28 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ title | default(site.name) }}</title>
-  <meta name="description" content="{{ description | default(site.bio) }}">
-  <meta property="og:title" content="{{ title | default(site.name) }}">
-  <meta property="og:description" content="{{ description | default(site.bio) }}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://aneesh.world{{ page.url }}">
-  <meta name="twitter:card" content="summary">
-  <link rel="canonical" href="https://aneesh.world{{ page.url }}">
-  <link rel="preload" href="/fonts/dm-serif-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="alternate" type="application/atom+xml" href="/feed.xml" title="{{ site.name }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}</title>
+<meta name="description" content="{{ description or site.description }}">
+<meta name="author" content="{{ site.author }}">
+<meta name="theme-color" content="#ebe5d8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0c0e" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="{% if title %}{{ title }} — {{ site.name }}{% else %}{{ site.name }}{% endif %}">
+<meta property="og:description" content="{{ description or site.description }}">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<link rel="alternate" type="application/atom+xml" title="{{ site.name }}" href="/feed.xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><circle cx=%2216%22 cy=%2216%22 r=%2210%22 fill=%22%23e8501f%22/></svg>">
+<link rel="stylesheet" href="/css/site.css">
+<script>
+// Inline theme bootstrap — avoid FOUC
+(function(){var s;try{s=localStorage.getItem("fc-theme")}catch(e){}var h=new Date().getHours();var m=(s==="light"||s==="dark")?s:((h>=6&&h<18)?"light":"dark");document.documentElement.dataset.theme=m;})();
+</script>
 </head>
-<body class="{{ bodyClass | default('') }}">
-  <a href="#main" class="skip-link">Skip to content</a>
-  {% include "partials/ambient.njk" %}
-  {% include "partials/nav.njk" %}
-  <main id="main" class="page-content {{ mainClass | default('') }}">
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+  {% include "partials/topbar.njk" %}
+  <main id="main">
     {{ content | safe }}
   </main>
   {% include "partials/footer.njk" %}
+  <script src="/js/theme.js" defer></script>
+  <script src="/js/heat.js" defer></script>
+  {% if needsPlate %}<script src="/js/plate.js" defer></script>{% endif %}
 </body>
 </html>

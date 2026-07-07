@@ -1,10 +1,29 @@
 {
-  "name": "Aneesh Simha",
-  "bio": "Working in the quiet space between language and logic.",
-  "tagline": "Writing code at the boundaries of language and logic.",
+  "name": "FALSE COLOR",
+  "author": "Aneesh Simha",
+  "tagline": "A personal magazine about software, taste, ambition, and the material future.",
+  "subtitle": "Edited and built by Aneesh Simha",
+  "issue": "Issue 001",
+  "issueTheme": "Systems / Style / Signal",
+  "url": "https://aneesh.world",
+  "description": "A personal magazine by Aneesh Simha about software, taste, ambition, and the material future.",
+  "nav": [
+    { "label": "Features", "url": "/" },
+    { "label": "Signals", "url": "/writing/" },
+    { "label": "Projects", "url": "/projects/" },
+    { "label": "About", "url": "/about/" }
+  ],
   "links": [
     { "label": "github", "url": "https://github.com/aneeshsimha" },
     { "label": "twitter", "url": "https://twitter.com/aneeshsimha" },
     { "label": "email", "url": "mailto:hi@aneesh.world" }
+  ],
+  "categories": [
+    { "key": "signal",    "label": "Signal",    "color": "cyan",     "def": "Current thoughts, short notes." },
+    { "key": "specimen",  "label": "Specimen",  "color": "violet",   "def": "Deep dives, dissected slowly." },
+    { "key": "interface", "label": "Interface", "color": "cyan",     "def": "Software, AI, systems." },
+    { "key": "material",  "label": "Material",  "color": "infrared", "def": "Fashion, materials, physical culture." },
+    { "key": "capital",   "label": "Capital",   "color": "amber",    "def": "VC, markets, deep tech." },
+    { "key": "field",     "label": "Field note","color": "magenta",  "def": "Personal observations." }
   ]
 }

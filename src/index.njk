@@ -1,10 +1,150 @@
 ---
 layout: base.njk
-bodyClass: page-home
-mainClass: home full-bleed
-description: "Aneesh Simha — building software at the intersection of systems and language."
+needsPlate: true
 ---
-<section class="hero">
-  <h1 class="hero__name">{{ site.name }}</h1>
-  <p class="hero__tagline">{{ site.tagline }}</p>
+
+{%- set posts = collections.posts or [] -%}
+{%- set featured = null -%}
+{%- for p in posts -%}
+  {%- if not featured and p.data.featured -%}
+    {%- set featured = p -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if not featured and posts.length -%}
+  {%- set featured = posts[0] -%}
+{%- endif -%}
+
+{%- set signals = [] -%}
+{%- for p in posts -%}
+  {%- if signals.length < 4 and (not featured or p.url != featured.url) -%}
+    {%- set _ = signals.push(p) -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- set placeholderSignals = [
+  { title: "The personal RAG app as resume artifact", standfirst: "Why a retrieval app that actually works says more than a CV ever could.", catLabel: "Interface", color: "cyan", url: "#" },
+  { title: "Materials databases and the future of taste", standfirst: "What spectral libraries and fabric archives reveal about how taste gets manufactured.", catLabel: "Material", color: "infrared", url: "#" },
+  { title: "Notes on deep tech VC", standfirst: "Reading the market for atoms, not just bits — and where the two finally meet.", catLabel: "Capital", color: "amber", url: "#" },
+  { title: "New York as an operating system", standfirst: "Scheduling, latency, and throughput in a city that never quite blocks.", catLabel: "Field note", color: "magenta", url: "#" }
+] -%}
+
+<h1 class="sr-only">{{ site.name }} — {{ site.tagline }}</h1>
+
+<header class="cover wrap">
+  <div class="kicker mono">
+    <span class="seg">{{ site.issue }}</span>
+    <span class="bar"></span>
+    <span>{{ site.issueTheme }}</span>
+  </div>
+  <h1 class="mast">FALSE<br>COLOR</h1>
+  <p class="standfirst">{{ site.tagline | replace("material future", "<em>material future</em>") | safe }}</p>
+  <p class="byline mono">Edited &amp; built by {{ site.author }}</p>
+</header>
+
+<section class="plate-block wrap">
+  <div class="plate" id="plate">
+    <canvas id="fc" aria-hidden="true"></canvas>
+    <div class="scan" aria-hidden="true"></div>
+    <span class="corner tl">SPECTRAL COMPOSITE</span>
+    <span class="corner br">λ 380–740 NM</span>
+  </div>
+  <div class="caption mono">
+    <span>Fig. 001 — false-color mapping of an unseen signal</span>
+    <span>Move across the plate to scan</span>
+  </div>
+</section>
+
+<section class="wrap">
+  {%- if featured -%}
+    {%- set fcat = categories[featured.data.category] -%}
+    {%- set fcatLabel = fcat.label if fcat else "Interface / Field note" -%}
+    <a class="fwrap" href="{{ featured.url }}" style="display:block">
+      <div class="feature">
+        <div>
+          <div class="fkick mono">Feature 001 &nbsp;·&nbsp; <b>{{ fcatLabel }}</b></div>
+          <h2>{{ featured.data.title }}</h2>
+          {%- if featured.data.standfirst %}
+          <p class="fstand">{{ featured.data.standfirst }}</p>
+          {%- endif %}
+          <div class="fmeta mono">
+            <span>{{ site.author }} — {{ featured.date | dateFormat }}</span>
+            <span class="read">Read feature →</span>
+          </div>
+        </div>
+        <div class="fvisual"><span class="fnum mono">F-001</span></div>
+      </div>
+    </a>
+  {%- else -%}
+    <a class="fwrap" href="#" style="display:block">
+      <div class="feature">
+        <div>
+          <div class="fkick mono">Feature 001 &nbsp;·&nbsp; <b>Interface / Field note</b></div>
+          <h2>Becoming an AI engineer without LARPing</h2>
+          <p class="fstand">A field note on building taste, systems, and proof-of-work — and why most portfolios prove neither.</p>
+          <div class="fmeta mono">
+            <span>{{ site.author }} — May 2026</span>
+            <span class="read">Read feature →</span>
+          </div>
+        </div>
+        <div class="fvisual"><span class="fnum mono">F-001</span></div>
+      </div>
+    </a>
+  {%- endif -%}
+</section>
+
+<section class="wrap" id="signals">
+  <div class="section-head">
+    <h3>Latest signals</h3>
+    <span class="meta mono">Index 01–04</span>
+    <a class="more" href="/writing/">All →</a>
+  </div>
+  <div class="grid">
+    {%- set total = signals.length -%}
+    {%- for post in signals -%}
+      {%- set cat = categories[post.data.category] -%}
+      {%- set color = cat.color if cat else "cyan" -%}
+      {%- set label = cat.label if cat else "Signal" -%}
+      <a class="sig" href="{{ post.url }}" style="--mk:var(--{{ color }})">
+        <span class="strip" aria-hidden="true"></span>
+        <div class="top">
+          <span class="mk"></span>
+          <span class="cat">{{ label }}</span>
+          <span class="no">{{ loop.index | pad2 }}</span>
+        </div>
+        <h4>{{ post.data.title }}</h4>
+        <p>{{ post.data.standfirst or "A short dispatch from the field." }}</p>
+      </a>
+    {%- endfor -%}
+    {%- if total < 4 -%}
+      {%- for ph in placeholderSignals -%}
+        {%- if loop.index0 >= total -%}
+          <a class="sig" href="{{ ph.url }}" style="--mk:var(--{{ ph.color }})">
+            <span class="strip" aria-hidden="true"></span>
+            <div class="top">
+              <span class="mk"></span>
+              <span class="cat">{{ ph.catLabel }}</span>
+              <span class="no">{{ loop.index | pad2 }}</span>
+            </div>
+            <h4>{{ ph.title }}</h4>
+            <p>{{ ph.standfirst }}</p>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+
+<section class="wrap index" id="index">
+  <h3>Index by signal type</h3>
+  <div class="legend">
+    {%- for cat in site.categories -%}
+      <div class="row2">
+        <span class="mk" style="background:var(--{{ cat.color }})"></span>
+        <div>
+          <div class="lbl">{{ cat.label }}</div>
+          <div class="def">{{ cat.def }}</div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
 </section>

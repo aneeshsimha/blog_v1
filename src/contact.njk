@@ -1,13 +1,29 @@
 ---
 layout: base.njk
 title: Contact
-description: "Get in touch with Aneesh Simha."
+permalink: /contact/
+description: "Get in touch"
 ---
-<section class="contact">
+<section class="wrap about">
+  <div class="kicker mono">
+    <span class="seg">Direct line</span>
+    <span class="bar"></span>
+    <span>{{ site.issue }}</span>
+  </div>
+
   <h1>Contact</h1>
-  <p class="contact__framing">If something here resonated, reach out.</p>
-  <ul class="contact__links">
-    <li><a href="mailto:hi@aneesh.world">hi@aneesh.world</a></li>
-    <li><a href="https://github.com/aneeshsimha">GitHub</a></li>
-  </ul>
+
+  <div class="bio">
+    <p>I read everything that comes in. I reply selectively — usually within a week, sometimes never. Not personal; it's the only way I keep the signal up.</p>
+
+    <p>Good reasons to email: a project you want to build together, a piece of writing here you have a sharp opinion about, a job or collaboration where the work is <em>specific</em>, a recommendation for something I should read or look at, or — best of all — telling me I'm wrong about something.</p>
+
+    <p>Less good: cold pitches that could've gone to anyone with a contact form.</p>
+  </div>
+
+  <div class="links">
+    {% for link in site.links %}
+    <a href="{{ link.url }}"{% if "http" in link.url %} rel="me noopener" target="_blank"{% endif %}>{{ link.label }}</a>
+    {% endfor %}
+  </div>
 </section>

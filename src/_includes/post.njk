@@ -1,15 +1,32 @@
 ---
 layout: base.njk
 ---
-<article class="post">
-  <header class="post__header">
-    <h1 class="post__title">{{ title }}</h1>
-    <div class="post__meta">
-      <time datetime="{{ date | dateToRfc3339 }}">{{ date | dateFormat }}</time>
-      <span>{{ content | readingTime }} min read</span>
-    </div>
-  </header>
-  <div class="post__body prose">
+{%- set cat = categories[category] or { label: "Signal", color: "cyan", key: "signal" } -%}
+{%- set mkVar = "var(--" + cat.color + ")" -%}
+<article class="wrap article" style="--mk: {{ mkVar }}">
+  <div class="kicker mono">
+    <span class="seg" style="color: {{ mkVar }}">{{ cat.label }}</span>
+    <span class="bar"></span>
+    <span>{{ site.issue }}</span>
+  </div>
+
+  <h1>{{ title }}</h1>
+  {% if standfirst %}<p class="standfirst">{{ standfirst | safe }}</p>{% endif %}
+
+  <div class="ameta">
+    <span>{{ site.author }}</span>
+    <span class="dot">·</span>
+    <time datetime="{{ page.date | dateToRfc3339 }}">{{ page.date | dateFormat }}</time>
+    <span class="dot">·</span>
+    <span>{{ content | readingTime }} min read</span>
+  </div>
+
+  <div class="prose">
     {{ content | safe }}
+  </div>
+
+  <div class="article-foot">
+    <a href="/writing/">← All signals</a>
+    <span>{{ site.name }} · {{ site.issue }}</span>
   </div>
 </article>

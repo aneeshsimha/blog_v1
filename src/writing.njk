@@ -1,20 +1,34 @@
 ---
 layout: base.njk
-title: Writing
+title: "Signals"
 permalink: /writing/
-description: "Writing by Aneesh Simha on systems, software, and language."
+description: "Signals — short notes, field notes, and dispatches from Aneesh Simha."
 ---
-<section class="writing-list">
-  <h1>Writing</h1>
-  {% for post in collections.posts %}
-  <a href="{{ post.url }}" class="post-card">
-    <h2 class="post-card__title">{{ post.data.title }}</h2>
-    <div class="post-card__meta">
-      <time datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | dateFormat }}</time>
-      <span>{{ post.content | readingTime }} min read</span>
-    </div>
-  </a>
-  {% else %}
-  <p>Nothing here yet.</p>
-  {% endfor %}
+<header class="wrap list-head">
+  <div class="kicker mono">
+    <span class="seg">Section · 001</span>
+    <span class="bar"></span>
+    <span>Notes / Field reports / Dispatches</span>
+  </div>
+  <h1>SIGNALS</h1>
+  <p class="standfirst">Notes, dispatches, and field reports on software, taste, ambition, and the <em>material future</em>.</p>
+</header>
+
+<section class="wrap">
+  <div class="list">
+    {% for post in collections.posts %}
+      {%- set cat = categories[post.data.category] or { label: "Signal", color: "cyan" } -%}
+      <article class="row" style="--mk: var(--{{ cat.color }})">
+        <span class="no mono">{{ loop.index | pad2 }}</span>
+        <span class="cat mono">{{ cat.label }}</span>
+        <span class="ttl">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+          {% if post.data.standfirst %}<span class="sub">{{ post.data.standfirst | safe }}</span>{% endif %}
+        </span>
+        <time class="when mono" datetime="{{ post.date | dateToRfc3339 }}">{{ post.date | dateFormat }}</time>
+      </article>
+    {% else %}
+      <p class="row" style="display:block;color:var(--ink-soft);font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase">No signals yet. Check back soon.</p>
+    {% endfor %}
+  </div>
 </section>
